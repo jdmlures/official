@@ -1,0 +1,65 @@
+[
+  {
+    "image": "https://picsum.photos/1920/1080?random=1",
+    "image2x": "https://picsum.photos/3840/2160?random=1",
+    "package": 1,
+    "price": 130,
+    "status": "stock",
+    "link": "detail1.html",
+    "country": "JP"
+  },
+  {
+    "image": "https://picsum.photos/1920/1080?random=2",
+    "image2x": "https://picsum.photos/3840/2160?random=2",
+    "package": 2,
+    "price": 150,
+    "status": "stock",
+    "link": "detail2.html",
+    "country": "US"
+  },
+  {
+    "image": "https://picsum.photos/1920/1080?random=3",
+    "image2x": "https://picsum.photos/3840/2160?random=3",
+    "package": 3,
+    "price": 180,
+    "status": "stock",
+    "link": "detail3.html",
+    "country": "CA"
+  },
+  {
+    "image": "https://picsum.photos/1920/1080?random=4",
+    "image2x": "https://picsum.photos/3840/2160?random=4",
+    "package": 4,
+    "price": 200,
+    "status": "stock",
+    "link": "detail4.html",
+    "country": "JP"
+  },
+  {
+    "image": "https://picsum.photos/1920/1080?random=5",
+    "image2x": "https://picsum.photos/3840/2160?random=5",
+    "package": 5,
+    "price": 220,
+    "status": "stock",
+    "link": "detail5.html",
+    "country": "US"
+  },
+  {
+    "image": "https://picsum.photos/1920/1080?random=6",
+    "image2x": "https://picsum.photos/3840/2160?random=6",
+    "package": 0,
+    "price": 0,
+    "status": "dummy",
+    "link": "",
+    "country": ""
+  },
+  {
+    "image": "https://picsum.photos/1920/1080?random=7",
+    "image2x": "https://picsum.photos/3840/2160?random=7",
+    "package": 0,
+    "price": 0,
+    "status": "dummy",
+    "link": "",
+    "country": ""
+  }
+]
