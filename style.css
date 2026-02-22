@@ -16,7 +16,7 @@ body{
 
 ul{ list-style:none; padding:0; margin:0; }
 
-/* トップバー */
+/* ================= TOP BAR ================= */
 .top-bar{
   background:var(--green);
   color:white;
@@ -32,18 +32,19 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .flag{ width:20px; height:14px; vertical-align:middle; }
 
-/* ロゴセクション */
+/* ================= LOGO ================= */
 .logo-section{
   padding:40px 0;
   text-align:center;
 }
+
 .logo-section img{
   max-width:100%;
   height:auto;
   display:inline-block;
 }
 
-/* ヒーローセクション */
+/* ================= HERO ================= */
 .hero{ position:relative; height:550px; overflow:hidden; }
 
 .slide{
@@ -58,7 +59,6 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .slide img{ width:100%; height:100%; object-fit:cover; }
 
-/* 商品情報ボックス */
 .product-info{
   position:absolute;
   top:50%;
@@ -91,6 +91,7 @@ ul{ list-style:none; padding:0; margin:0; }
   top:50%;
   transform:translate(-50%, -50%);
 }
+
 .slide.coming .package{ margin:0; }
 
 .product-info:hover{
@@ -151,11 +152,11 @@ ul{ list-style:none; padding:0; margin:0; }
   transform:scale(1.3);
 }
 
-/* セクション */
-.section{ padding:60px 0; border-top:1px solid #ccc; }
+/* ================= SECTIONS ================= */
+.section{ padding:40px 0; border-top:1px solid #ccc; }
 .container{ max-width:900px; margin:0 auto; padding:0 20px; }
 
-/* カードスライダー */
+/* ================= CARD SLIDER ================= */
 .card-slider{
   display:flex;
   gap:20px;
@@ -167,7 +168,6 @@ ul{ list-style:none; padding:0; margin:0; }
   z-index:2;
 }
 
-/* カード */
 .card{
   flex-shrink:0;
   scroll-snap-align:start;
@@ -211,38 +211,65 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .card .meta img.flag{ width:20px; height:14px; }
 
-/* CONTACT アイコン */
+/* ================= CONTACT & FOOTER ================= */
 .contact-icon{
   display:inline-block;
-  width:50px;
+  width:80px;
   height:50px;
   border-radius:50%;
   margin-right:15px;
   background-size:60%;
   background-repeat:no-repeat;
   background-position:center;
+  transition: transform 0.3s;
 }
 
-.instagram{ background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'); }
-.gmail{ background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png'); }
-.twitter{ background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg'); }
+.contact-icon:hover{ transform: scale(1.1); }
 
-/* フッター */
-.footer{ margin-top:60px; font-size:14px; opacity:0.7; border-top:1px solid #ddd; padding-top:20px; }
+.instagram{ background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'); }
+.gmail{ background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png'); }
+.whatsapp{ background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'); }
 
-/* メディアクエリ */
+.contact-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding:0;
+  margin:20px 0 0 0;
+  list-style: none;
+}
+
+.footer{
+  margin-top:40px;
+  font-size:14px;
+  opacity:0.7;
+  border-top:1px solid #ddd;
+  padding-top:20px;
+  text-align:center;
+}
+
+/* ================= MEDIA QUERIES ================= */
 @media(max-width:768px){
   .hero{ height:420px; }
   .product-info{ padding:15px 25px; }
   .price{ font-size:26px; }
 
   .card{
-    min-width:85%; 
-    max-width:90%; 
+    min-width:85%;
+    max-width:90%;
   }
 
   .card img{
-    max-height:180px; 
+    max-height:180px;
     height:auto;
+  }
+
+  .contact-icon{
+    width:60px;
+    height:40px;
+  }
+  .contact-list{
+    gap:15px;
   }
 }
