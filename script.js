@@ -1,8 +1,10 @@
+// ====================== SELECTORS ======================
 const slidesContainer = document.querySelector(".hero");
 const cardSlider = document.querySelector(".card-slider");
 
 let slides = [], index = 0, slideInterval = null;
 
+// ====================== JSON DATA ======================
 const packageData = [
   {"image":"https://picsum.photos/800/550?1","package":1,"price":130,"status":"stock","link":"detail.html?id=1","sold":"2026-02-21","listed":"2026-02-15","shipped":"JP"},
   {"image":"https://picsum.photos/800/550?2","package":2,"price":150,"status":"stock","link":"detail.html?id=2","sold":"2026-02-20","listed":"2026-02-14","shipped":"US"},
@@ -12,24 +14,29 @@ const packageData = [
   {"image":"https://picsum.photos/800/550?dummy","package":0,"price":0,"status":"dummy","link":"","sold":"","listed":"","shipped":""}
 ];
 
-// ---------------------- UTILS ----------------------
-function getFlagEmoji(code){
+// ====================== COUNTRY FLAG URL ======================
+function getFlagURL(code){
   if(!code) return "";
-  code = code.toUpperCase();
-  if(code.length !== 2) return "";
-  const offset = 0x1F1E6 - 'A'.charCodeAt(0);
-  return String.fromCodePoint(
-    code.charCodeAt(0) + offset,
-    code.charCodeAt(1) + offset
-  );
+  const map = {
+    JP:"9/9e/Flag_of_Japan.svg",
+    US:"a/a4/Flag_of_the_United_States.svg",
+    CA:"c/cf/Flag_of_Canada.svg",
+    SE:"b/bd/Flag_of_Sweden.svg",
+    DE:"b/ba/Flag_of_Germany.svg",
+    GB:"a/ae/Flag_of_the_United_Kingdom.svg",
+    NL:"2/20/Flag_of_the_Netherlands.svg",
+    FR:"c/c3/Flag_of_France.svg"
+  };
+  if(!map[code]) return "";
+  return `https://upload.wikimedia.org/wikipedia/en/${map[code]}`;
 }
 
-// ---------------------- HERO SLIDES ----------------------
+// ====================== HERO SLIDES ======================
 function createSlides(data){
   slidesContainer.innerHTML = "";
   slides = [];
 
-  data.forEach(item=>{
+  data.forEach((item,i)=>{
     const slide = document.createElement("div");
     slide.className="slide";
     if(item.status==="dummy") slide.classList.add("coming");
@@ -83,10 +90,12 @@ function startAutoSlide(){
   slideInterval=setInterval(()=>showSlide((index+1)%slides.length),4000);
 }
 
-// ---------------------- SWIPE SUPPORT ----------------------
+// ====================== SWIPE SUPPORT ======================
 function addSwipeSupport(){
   let startX=0,endX=0;
-  slidesContainer.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+  slidesContainer.addEventListener("touchstart",e=>{
+    startX=e.touches[0].clientX;
+  });
   slidesContainer.addEventListener("touchend",e=>{
     endX=e.changedTouches[0].clientX;
     const diff=startX-endX;
@@ -98,13 +107,12 @@ function addSwipeSupport(){
   });
 }
 
-// ---------------------- CARD SLIDER ----------------------
+// ====================== CARD SLIDER ======================
 function createCardSlider(data){
   cardSlider.innerHTML="";
 
   data.forEach(item=>{
     if(item.status==="dummy") return;
-
     const card=document.createElement("div");
     card.className="card";
 
@@ -125,19 +133,31 @@ function createCardSlider(data){
     card.appendChild(metaListed);
 
     const metaShipped=document.createElement("p");
-    const flagEmoji = getFlagEmoji(item.shipped);
-    metaShipped.textContent = flagEmoji ? `✈️ Shipped to ${flagEmoji}` : "✈️ Shipped to Unknown";
+    const flagURL = getFlagURL(item.shipped);
+    if(flagURL){
+      metaShipped.innerHTML="✈️ Shipped to ";
+      const imgFlag = document.createElement("img");
+      imgFlag.src = flagURL;
+      imgFlag.className="flag";
+      imgFlag.style.width="20px";
+      imgFlag.style.height="14px";
+      imgFlag.style.verticalAlign="middle";
+      metaShipped.appendChild(imgFlag);
+    }
     card.appendChild(metaShipped);
 
     cardSlider.appendChild(card);
   });
 }
 
-// ---------------------- JAPAN TIME ----------------------
+// ====================== JAPAN TIME ======================
 function updateTime(){
   const t=new Date().toLocaleTimeString("en-US",{
     timeZone:"Asia/Tokyo",
-    hour12:false,hour:"2-digit",minute:"2-digit",second:"2-digit"
+    hour12:false,
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit"
   });
   const el=document.getElementById("japan-time");
   if(el) el.textContent="Japan Time: "+t;
@@ -145,6 +165,6 @@ function updateTime(){
 updateTime();
 setInterval(updateTime,1000);
 
-// ---------------------- INIT ----------------------
+// ====================== INIT ======================
 createSlides(packageData);
 createCardSlider(packageData);
