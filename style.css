@@ -16,7 +16,7 @@ body{
 
 ul{ list-style:none; padding:0; margin:0; }
 
-/* トップバー */
+/* ================= TOP BAR ================= */
 .top-bar{
   background:var(--green);
   color:white;
@@ -32,7 +32,7 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .flag{ width:20px; height:14px; vertical-align:middle; }
 
-/* ロゴセクション */
+/* ================= LOGO ================= */
 .logo-section{
   padding:40px 0;
   text-align:center;
@@ -43,7 +43,7 @@ ul{ list-style:none; padding:0; margin:0; }
   display:inline-block;
 }
 
-/* ヒーローセクション */
+/* ================= HERO ================= */
 .hero{ position:relative; height:550px; overflow:hidden; }
 
 .slide{
@@ -58,7 +58,7 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .slide img{ width:100%; height:100%; object-fit:cover; }
 
-/* 商品情報ボックス */
+/* ================= PRODUCT INFO ================= */
 .product-info{
   position:absolute;
   top:50%;
@@ -97,7 +97,7 @@ ul{ list-style:none; padding:0; margin:0; }
   box-shadow:0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* 三角マーク */
+/* ================= TRIANGLE ================= */
 .triangle{
   position:absolute;
   top:-1px;
@@ -125,7 +125,7 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .triangle.coming{ background:#999; }
 
-/* ドット */
+/* ================= DOTS ================= */
 .dots{
   position:absolute;
   bottom:15px;
@@ -151,11 +151,11 @@ ul{ list-style:none; padding:0; margin:0; }
   transform:scale(1.3);
 }
 
-/* セクション */
+/* ================= SECTIONS ================= */
 .section{ padding:40px 0; border-top:1px solid #ccc; }
 .container{ max-width:900px; margin:0 auto; padding:0 20px; }
 
-/* カードスライダー */
+/* ================= CARD SLIDER ================= */
 .card-slider{
   display:flex;
   gap:20px;
@@ -167,7 +167,7 @@ ul{ list-style:none; padding:0; margin:0; }
   z-index:2;
 }
 
-/* カード */
+/* ================= CARD ================= */
 .card{
   flex-shrink:0;
   scroll-snap-align:start;
@@ -182,7 +182,6 @@ ul{ list-style:none; padding:0; margin:0; }
   box-sizing:border-box;
   text-decoration:none;
   color:var(--green);
-
   min-width:280px; 
   max-width:320px; 
 }
@@ -211,7 +210,7 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .card .meta img.flag{ width:20px; height:14px; }
 
-/* CONTACT アイコン */
+/* ================= CONTACT ICON ================= */
 .contact-icon{
   display:inline-block;
   width:80px;
@@ -227,87 +226,85 @@ ul{ list-style:none; padding:0; margin:0; }
 .gmail{ background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png'); }
 .whatsapp{ background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'); }
 
-/* CONTACT 横並び */
+/* ================= CONTACT 横並び ================= */
 .contact-list {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 15px;
+  flex-direction: row;  /* 横並び */
+  justify-content: center; /* 中央揃え */
+  gap: 15px; /* アイコン間の間隔 */
   padding: 0;
   margin: 0;
 }
 
 .contact-list li {
-  list-style: none;
+  list-style: none; /* 余計なマーカーを消す */
 }
 
-/* フッター */
-.footer{ margin-top:60px; font-size:14px; opacity:0.7; border-top:1px solid #ddd; padding-top:20px; text-align:center; }
+/* ================= FOOTER ================= */
+.footer{ margin-top:60px; font-size:14px; opacity:0.7; border-top:1px solid #ddd; padding-top:20px; text-align: center; }
 
-/* ================= CURATION SERVICE ================= */
-.curation-service {
+/* ================= CUSTOM SERVICE ================= */
+
+
+
+.custom-service-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 40px auto;
+}
+
+.custom-service-section .container h2 {
+text-align: left;
+}
+
+
+.custom-button {
   position: relative;
-  width: 100%;
-  height: 540px; /* 既存セクションと同じ高さ */
-  background-image: url('img/menu.png');
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 900px;  /* 中央寄せで余白確保 */
+  height: 300px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.curation-service h2{
-  color:white;
-  font-size:32px;
-  font-weight:bold;
-  text-shadow:0 2px 6px rgba(0,0,0,0.5);
-}
-
-.curation-service::before {
-  content: '';
+.custom-button::before {
+  content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  filter: blur(-60px);
-  z-index:0;
+  top:0; left:0; width:100%; height:100%;
+  background-image: url('img/menu.png');  /* 任意の背景画像 */
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.6); /* ぼかし＋暗め */
+  z-index: 0;
 }
 
-.curation-service .curation-link {
+.custom-button span {
   position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-}
-
-.curation-service .curation-overlay {
-  position: relative;
-  z-index:1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.curation-service p {
-  color: white;
-  font-size: 20px;
+  z-index: 1;
   text-align: center;
-  margin: 0 20px;
-  font-weight: bold;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-  cursor: pointer;
-  transition: transform 0.3s;
+  padding: 0 15px;
 }
 
-.curation-service p:hover {
-  transform: scale(1.05);
+/* スマホ対応 */
+@media(max-width:768px){
+  .custom-button {
+    height: 220px;
+    font-size: 20px;
+  }
 }
 
-/* メディアクエリ */
+
+
+/* ================= MEDIA QUERY ================= */
 @media(max-width:768px){
   .hero{ height:420px; }
   .product-info{ padding:15px 25px; }
@@ -323,7 +320,7 @@ ul{ list-style:none; padding:0; margin:0; }
     height:auto;
   }
 
-  .curation-service p{
-    font-size:18px;
+  .banner-text{
+    font-size:22px;
   }
 }
