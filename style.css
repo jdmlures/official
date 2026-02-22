@@ -259,13 +259,13 @@ text-align: left;
 }
 
 
-.custom-button {
+/* .custom-button {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 900px;  /* 中央寄せで余白確保 */
+  max-width: 900px; 
   height: 300px;
   margin-top: 20px;
   text-decoration: none;
@@ -274,13 +274,46 @@ text-align: left;
   font-weight: bold;
   border-radius: 10px;
   overflow: hidden;
+} */
+ 
+
+.custom-button {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.custom-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  height: 240px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  /* ミニマル */
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+
+  transition: transform .08s ease;
 }
 
 .custom-button::before {
   content: "";
   position: absolute;
   top:0; left:0; width:100%; height:100%;
-  background-image: url('img/0menu.png');  /* 任意の背景画像 */
+  background-image: url('img/0menu.png');  
   background-size: 110%;
   background-position: -16px 10px;
   /* filter: blur(2px) brightness(0.6);  */
@@ -293,6 +326,7 @@ text-align: left;
   text-align: center;
   padding: 0 15px;
 }
+
 
 /* スマホ対応 */
 @media(max-width:768px){
