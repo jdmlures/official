@@ -4,8 +4,6 @@
   --red:#dc1c13;
 }
 
-/* updated just now */
-
 html{ scroll-behavior:smooth; }
 
 body{
@@ -33,6 +31,17 @@ ul{ list-style:none; padding:0; margin:0; }
 }
 
 .flag{ width:20px; height:14px; vertical-align:middle; }
+
+/* ロゴセクション */
+.logo-section{
+  padding:40px 0;
+  text-align:center;
+}
+.logo-section img{
+  max-width:100%;
+  height:auto;
+  display:inline-block;
+}
 
 /* ヒーローセクション */
 .hero{ position:relative; height:550px; overflow:hidden; }
@@ -174,17 +183,16 @@ ul{ list-style:none; padding:0; margin:0; }
   text-decoration:none;
   color:var(--green);
 
-  min-width:280px; /* 小さい画面でも確保 */
-  max-width:320px; /* 大画面でも大きくなりすぎない */
+  min-width:280px; 
+  max-width:320px; 
 }
 
 .card:hover{ transform:translateY(-6px); }
 
-/* カード内画像 */
 .card img{
   width:100%;
-  height:auto;      /* 高さ自動 */
-  max-height:200px; /* 大画面で巨大化防止 */
+  height:auto;
+  max-height:200px;
   object-fit:cover;
   border-radius:4px;
   margin-bottom:10px;
@@ -222,19 +230,19 @@ ul{ list-style:none; padding:0; margin:0; }
 /* フッター */
 .footer{ margin-top:60px; font-size:14px; opacity:0.7; border-top:1px solid #ddd; padding-top:20px; }
 
-/* メディアクエリ（スマホ対応） */
+/* メディアクエリ */
 @media(max-width:768px){
   .hero{ height:420px; }
   .product-info{ padding:15px 25px; }
   .price{ font-size:26px; }
 
   .card{
-    min-width:85%;  /* 小さい画面でカード幅調整 */
-    max-width:90%;  /* スマホでも広がりすぎない */
+    min-width:85%; 
+    max-width:90%; 
   }
 
   .card img{
-    max-height:180px; /* スマホでは少し小さめに */
+    max-height:180px; 
     height:auto;
   }
 }
