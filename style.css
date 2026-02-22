@@ -280,7 +280,7 @@ text-align: left;
   content: "";
   position: absolute;
   top:0; left:0; width:100%; height:100%;
-  background-image: url('img/menu.png');  /* 任意の背景画像 */
+  background-image: url('img/0menu.png');  /* 任意の背景画像 */
   background-size: cover;
   background-position: center;
   filter: blur(2px) brightness(0.6); /* ぼかし＋暗め */
