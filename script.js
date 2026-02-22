@@ -14,21 +14,15 @@ const packageData = [
   {"image":"https://picsum.photos/800/550?dummy","package":0,"price":0,"status":"dummy","link":"","sold":"","listed":"","shipped":""}
 ];
 
-// ====================== COUNTRY FLAG URL ======================
-function getFlagURL(code){
+// ====================== COUNTRY FLAG UTILS ======================
+function getFlagEmoji(code){
   if(!code) return "";
-  const map = {
-    JP:"9/9e/Flag_of_Japan.svg",
-    US:"a/a4/Flag_of_the_United_States.svg",
-    CA:"c/cf/Flag_of_Canada.svg",
-    SE:"b/bd/Flag_of_Sweden.svg",
-    DE:"b/ba/Flag_of_Germany.svg",
-    GB:"a/ae/Flag_of_the_United_Kingdom.svg",
-    NL:"2/20/Flag_of_the_Netherlands.svg",
-    FR:"c/c3/Flag_of_France.svg"
-  };
-  if(!map[code]) return "";
-  return `https://upload.wikimedia.org/wikipedia/en/${map[code]}`;
+  code = code.toUpperCase();
+  const offset = 0x1F1E6 - 'A'.charCodeAt(0);
+  return String.fromCodePoint(
+    code.charCodeAt(0) + offset,
+    code.charCodeAt(1) + offset
+  );
 }
 
 // ====================== HERO SLIDES ======================
@@ -36,7 +30,7 @@ function createSlides(data){
   slidesContainer.innerHTML = "";
   slides = [];
 
-  data.forEach((item,i)=>{
+  data.forEach((item)=>{
     const slide = document.createElement("div");
     slide.className="slide";
     if(item.status==="dummy") slide.classList.add("coming");
@@ -133,17 +127,7 @@ function createCardSlider(data){
     card.appendChild(metaListed);
 
     const metaShipped=document.createElement("p");
-    const flagURL = getFlagURL(item.shipped);
-    if(flagURL){
-      metaShipped.innerHTML="✈️ Shipped to ";
-      const imgFlag = document.createElement("img");
-      imgFlag.src = flagURL;
-      imgFlag.className="flag";
-      imgFlag.style.width="20px";
-      imgFlag.style.height="14px";
-      imgFlag.style.verticalAlign="middle";
-      metaShipped.appendChild(imgFlag);
-    }
+    metaShipped.textContent=`✈️ Shipped to ${getFlagEmoji(item.shipped)}`;
     card.appendChild(metaShipped);
 
     cardSlider.appendChild(card);
