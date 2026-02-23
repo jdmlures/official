@@ -24,6 +24,18 @@
       "description": "Package 2 description",
       "salesImages": ["img/0menu.png"]
     },
+        {
+      "id": 3,
+      "image": "img/img3.jpg",
+      "package": 3,
+      "price": 112,
+      "status": "stock",
+      "sold": "2026-02-22",
+      "listed": "2026-02-16",
+      "shipped": "JP",
+      "description": "Package 3 description",
+      "salesImages": ["img/0menu.png"]
+    },
     {
       "id": 4,
       "image": "img/img4.jpg",
