@@ -1,10 +1,9 @@
-// ====================== SELECTORS ======================
 const slidesContainer = document.querySelector(".hero");
 const cardSlider = document.querySelector(".card-slider");
 
 let slides = [], index = 0, slideInterval = null;
 
-// ====================== COUNTRY FLAG UTILS ======================
+// ====================== FLAG UTILS ======================
 function getFlagEmoji(code){
   if(!code) return "";
   code = code.toUpperCase();
@@ -22,38 +21,47 @@ function createSlides(data){
     slide.className="slide";
     if(item.status==="dummy") slide.classList.add("coming");
 
-    const img = document.createElement("img");
-    img.src=item.image;
-    img.alt=item.status==="dummy" ? "Coming Soon" : `Package #${item.package}`;
-    slide.appendChild(img);
+    // STOCK のみ画像と情報を表示
+    if(item.status !== "dummy"){
+      const img = document.createElement("img");
+      img.src=item.image;
+      img.alt=`Package #${item.package}`;
+      slide.appendChild(img);
 
-    const info = document.createElement("div");
-    info.className="product-info";
-    const p = document.createElement("p");
-    p.className="package";
-    p.textContent=item.status==="dummy" ? "COMING SOON" : `Package #${item.package}`;
-    info.appendChild(p);
+      const info = document.createElement("div");
+      info.className="product-info";
 
-    if(item.status!=="dummy"){
+      const p = document.createElement("p");
+      p.className="package";
+      p.textContent = `Package #${item.package}`;
+      info.appendChild(p);
+
       const priceBtn=document.createElement("span");
       priceBtn.className="price";
       priceBtn.textContent=`$ ${item.price}`;
       info.appendChild(priceBtn);
 
-      // detail.html に id パラメータ付きで遷移
       info.addEventListener("click",()=>window.location.href=`detail/detail.html?id=${item.id}`);
       info.style.cursor="pointer";
+      slide.appendChild(info);
     }
 
-    slide.appendChild(info);
-
+    // TRIANGLE FLAG
     const tri=document.createElement("div");
     tri.className="triangle";
     if(item.status==="dummy") tri.classList.add("coming");
     const span=document.createElement("span");
-    span.textContent=item.status==="dummy" ? "COMING" : "STOCK";
+    span.textContent = item.status==="dummy" ? "COMING" : "STOCK";
     tri.appendChild(span);
     slide.appendChild(tri);
+
+    // DUMMY TEXT
+    if(item.status==="dummy"){
+      const dummyText = document.createElement("div");
+      dummyText.className = "dummy-text";
+      dummyText.textContent = "COMING SOON";
+      slide.appendChild(dummyText);
+    }
 
     slidesContainer.appendChild(slide);
     slides.push(slide);
@@ -74,7 +82,6 @@ function startAutoSlide(){
   slideInterval=setInterval(()=>showSlide((index+1)%slides.length),4000);
 }
 
-// ====================== SWIPE SUPPORT ======================
 function addSwipeSupport(){
   let startX=0,endX=0;
   slidesContainer.addEventListener("touchstart",e=>{ startX=e.touches[0].clientX; });
@@ -89,35 +96,38 @@ function addSwipeSupport(){
   });
 }
 
-// ====================== CARD SLIDER ======================
+// ====================== SALES HISTORY ======================
 function createCardSlider(data){
   cardSlider.innerHTML="";
   data.forEach(item=>{
-    if(item.status==="dummy") return;
-    const card=document.createElement("div");
-    card.className="card";
+    if(!item.salesImages || item.salesImages.length===0) return;
 
-    const img=document.createElement("img");
-    img.src=item.image;
-    card.appendChild(img);
+    item.salesImages.forEach(imgPath=>{
+      const card=document.createElement("div");
+      card.className="card";
 
-    const title=document.createElement("h3");
-    title.textContent=`Package #${item.package}`;
-    card.appendChild(title);
+      const img=document.createElement("img");
+      img.src=imgPath;
+      card.appendChild(img);
 
-    const metaSold=document.createElement("p");
-    metaSold.textContent=`✅ Sold date: ${item.sold}`;
-    card.appendChild(metaSold);
+      const title=document.createElement("h3");
+      title.textContent=`Package #${item.package}`;
+      card.appendChild(title);
 
-    const metaListed=document.createElement("p");
-    metaListed.textContent=`🏷️ Listed date: ${item.listed}`;
-    card.appendChild(metaListed);
+      const metaSold=document.createElement("p");
+      metaSold.textContent=`✅ Sold date: ${item.sold}`;
+      card.appendChild(metaSold);
 
-    const metaShipped=document.createElement("p");
-    metaShipped.textContent=`✈️ Shipped to ${getFlagEmoji(item.shipped)}`;
-    card.appendChild(metaShipped);
+      const metaListed=document.createElement("p");
+      metaListed.textContent=`🏷️ Listed date: ${item.listed}`;
+      card.appendChild(metaListed);
 
-    cardSlider.appendChild(card);
+      const metaShipped=document.createElement("p");
+      metaShipped.textContent=`✈️ Shipped to ${getFlagEmoji(item.shipped)}`;
+      card.appendChild(metaShipped);
+
+      cardSlider.appendChild(card);
+    });
   });
 }
 
