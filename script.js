@@ -4,25 +4,12 @@ const cardSlider = document.querySelector(".card-slider");
 
 let slides = [], index = 0, slideInterval = null;
 
-// ====================== JSON DATA ======================
-const packageData = [
-  {"image":"https://picsum.photos/800/550?1","package":1,"price":130,"status":"stock","link":"detail/detail.html?id=1","sold":"2026-02-21","listed":"2026-02-15","shipped":"JP"},
-  {"image":"https://picsum.photos/800/550?2","package":2,"price":150,"status":"stock","link":"detail/detail.html?id=2","sold":"2026-02-20","listed":"2026-02-14","shipped":"US"},
-  {"image":"https://picsum.photos/800/550?3","package":3,"price":180,"status":"stock","link":"detail/detail.html?id=3","sold":"2026-02-19","listed":"2026-02-13","shipped":"CA"},
-  {"image":"https://picsum.photos/800/550?4","package":4,"price":200,"status":"stock","link":"detail/detail.html?id=4","sold":"2026-02-18","listed":"2026-02-12","shipped":"SE"},
-  {"image":"https://picsum.photos/800/550?5","package":5,"price":220,"status":"stock","link":"detail.html?id=5","sold":"2026-02-17","listed":"2026-02-11","shipped":"DE"},
-  {"image":"https://picsum.photos/800/550?dummy","package":0,"price":0,"status":"dummy","link":"","sold":"","listed":"","shipped":""}
-];
-
 // ====================== COUNTRY FLAG UTILS ======================
 function getFlagEmoji(code){
   if(!code) return "";
   code = code.toUpperCase();
   const offset = 0x1F1E6 - 'A'.charCodeAt(0);
-  return String.fromCodePoint(
-    code.charCodeAt(0) + offset,
-    code.charCodeAt(1) + offset
-  );
+  return String.fromCodePoint(code.charCodeAt(0)+offset, code.charCodeAt(1)+offset);
 }
 
 // ====================== HERO SLIDES ======================
@@ -52,9 +39,12 @@ function createSlides(data){
       priceBtn.className="price";
       priceBtn.textContent=`$ ${item.price}`;
       info.appendChild(priceBtn);
-      info.addEventListener("click",()=>window.location.href=item.link);
+
+      // detail.html に id パラメータ付きで遷移
+      info.addEventListener("click",()=>window.location.href=`detail/detail.html?id=${item.id}`);
       info.style.cursor="pointer";
     }
+
     slide.appendChild(info);
 
     const tri=document.createElement("div");
@@ -87,9 +77,7 @@ function startAutoSlide(){
 // ====================== SWIPE SUPPORT ======================
 function addSwipeSupport(){
   let startX=0,endX=0;
-  slidesContainer.addEventListener("touchstart",e=>{
-    startX=e.touches[0].clientX;
-  });
+  slidesContainer.addEventListener("touchstart",e=>{ startX=e.touches[0].clientX; });
   slidesContainer.addEventListener("touchend",e=>{
     endX=e.changedTouches[0].clientX;
     const diff=startX-endX;
@@ -104,7 +92,6 @@ function addSwipeSupport(){
 // ====================== CARD SLIDER ======================
 function createCardSlider(data){
   cardSlider.innerHTML="";
-
   data.forEach(item=>{
     if(item.status==="dummy") return;
     const card=document.createElement("div");
@@ -136,13 +123,7 @@ function createCardSlider(data){
 
 // ====================== JAPAN TIME ======================
 function updateTime(){
-  const t=new Date().toLocaleTimeString("en-US",{
-    timeZone:"Asia/Tokyo",
-    hour12:false,
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit"
-  });
+  const t=new Date().toLocaleTimeString("en-US",{ timeZone:"Asia/Tokyo", hour12:false, hour:"2-digit", minute:"2-digit", second:"2-digit" });
   const el=document.getElementById("japan-time");
   if(el) el.textContent="Japan Time: "+t;
 }
@@ -150,5 +131,9 @@ updateTime();
 setInterval(updateTime,1000);
 
 // ====================== INIT ======================
-createSlides(packageData);
-createCardSlider(packageData);
+fetch("package.json")
+  .then(res=>res.json())
+  .then(data=>{
+    createSlides(data.packages);
+    createCardSlider(data.packages);
+  });

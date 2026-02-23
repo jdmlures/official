@@ -1,67 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Product Detail</title>
-<style>
-body{
-  margin:0;
-  font-family:Georgia, serif;
-  background:#faf9f4;
-  text-align:center;
-}
-.container{
-  padding:50px 20px;
-}
-img{
-  width:80%;
-  max-width:700px;
-  height:auto;
-}
-.price{
-  font-size:28px;
-  font-weight:900;
-  color:#bc002d;
-}
-.back{
-  display:inline-block;
-  margin-top:30px;
-  text-decoration:none;
-  color:#154734;
-  font-weight:bold;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JDMLures Detail</title>
+<link rel="stylesheet" href="detail.css">
+
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X7TTG6B29W');
+</script>
 </head>
 <body>
 
-<div class="container">
-  <h1 id="title"></h1>
-  <img id="mainImage">
-  <p class="price" id="price"></p>
-  <br>
-  <a class="back" href="../index.html">← Back</a>
-</div>
+<section class="hero">
+  <img id="detail-hero-img" src="" alt="Product Hero">
+</section>
+<section class="section">
+  <div class="container">
+    <h2 id="detail-title"></h2>
+    <p id="detail-price"></p>
+    <p id="detail-desc"></p>
+  </div>
+</section>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
-const data = {
-  1:{img:"https://picsum.photos/800/550?1", price:130},
-  2:{img:"https://picsum.photos/800/550?2", price:150},
-  3:{img:"https://picsum.photos/800/550?3", price:180},
-  4:{img:"https://picsum.photos/800/550?4", price:200},
-  5:{img:"https://picsum.photos/800/550?5", price:220}
-};
-
-if(data[id]){
-  document.getElementById("title").textContent = "Package #" + id;
-  document.getElementById("mainImage").src = data[id].img;
-  document.getElementById("price").textContent = "$ " + data[id].price;
-}else{
-  document.getElementById("title").textContent = "Product Not Found";
-}
-</script>
-
+<button><a href="../index.html"></a></button>
+<script src="detail.js"></script>
 </body>
 </html>

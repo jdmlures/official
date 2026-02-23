@@ -1,64 +1,70 @@
 {
   "packages": [
     {
-      "image":"https://picsum.photos/800/550?1",
-      "package":1,
-      "price":130,
-      "status":"stock",
-      "link":"detail/detail.html?id=1",
-      "sold":"2026-02-21",
-      "listed":"2026-02-15",
-      "shipped":"JP"
+      "id": 1,
+      "image": "img/logo.png",
+      "package": 1,
+      "price": 130,
+      "status": "stock",
+      "sold": "2026-02-21",
+      "listed": "2026-02-15",
+      "shipped": "US",
+      "description": "Package 1 description"
     },
     {
-      "image":"https://picsum.photos/800/550?2",
-      "package":2,
-      "price":150,
-      "status":"stock",
-      "link":"detail/detail.html?id=2",
-      "sold":"2026-02-20",
-      "listed":"2026-02-14",
-      "shipped":"US"
+      "id": 2,
+      "image": "img/img2.jpg",
+      "package": 2,
+      "price": 150,
+      "status": "stock",
+      "sold": "2026-02-20",
+      "listed": "2026-02-14",
+      "shipped": "US",
+      "description": "Package 2 description"
     },
     {
-      "image":"https://picsum.photos/800/550?3",
-      "package":3,
-      "price":180,
-      "status":"stock",
-      "link":"detail/detail.html?id=3",
-      "sold":"2026-02-19",
-      "listed":"2026-02-13",
-      "shipped":"CA"
+      "id": 3,
+      "image": "img/img3.jpg",
+      "package": 3,
+      "price": 180,
+      "status": "stock",
+      "sold": "2026-02-19",
+      "listed": "2026-02-13",
+      "shipped": "CA",
+      "description": "Package 3 description"
     },
     {
-      "image":"https://picsum.photos/800/550?4",
-      "package":4,
-      "price":200,
-      "status":"stock",
-      "link":"detail/detail.html?id=4",
-      "sold":"2026-02-18",
-      "listed":"2026-02-12",
-      "shipped":"SE"
+      "id": 4,
+      "image": "img/img4.jpg",
+      "package": 4,
+      "price": 200,
+      "status": "stock",
+      "sold": "2026-02-18",
+      "listed": "2026-02-12",
+      "shipped": "SE",
+      "description": "Package 4 description"
     },
     {
-      "image":"https://picsum.photos/800/550?5",
-      "package":5,
-      "price":220,
-      "status":"stock",
-      "link":"detail/detail.html?id=5",
-      "sold":"2026-02-17",
-      "listed":"2026-02-11",
-      "shipped":"DE"
+      "id": 5,
+      "image": "img/img5.jpg",
+      "package": 5,
+      "price": 220,
+      "status": "stock",
+      "sold": "2026-02-17",
+      "listed": "2026-02-11",
+      "shipped": "DE",
+      "description": "Package 5 description"
     },
     {
-      "image":"https://picsum.photos/800/550?dummy",
-      "package":0,
-      "price":0,
-      "status":"dummy",
-      "link":"",
-      "sold":"",
-      "listed":"",
-      "shipped":""
+      "id": 0,
+      "image": "img/dummy.jpg",
+      "package": 0,
+      "price": 0,
+      "status": "dummy",
+      "sold": "",
+      "listed": "",
+      "shipped": "",
+      "description": "Coming Soon"
     }
   ]
 }
