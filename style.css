@@ -135,6 +135,32 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .triangle.coming{ background:#999; }
 
+/* COMING SOON 用中央ボタン */
+.slide.coming .coming-soon-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 25px;
+  background: rgba(255,255,255,0.5);
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  pointer-events: none; /* リンクではないので */
+  z-index: 10;
+}
+
+/* 三角フラグは既存 */
+.slide.coming .triangle {
+  display: block;
+}
+
+/* COMING SOON スライドに product-info が残っていたら非表示 */
+.slide.coming .product-info {
+  display: none !important;
+}
+
 /* ================= DOTS ================= */
 .dots{
   position:absolute;
