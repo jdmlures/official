@@ -4,27 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JDMLures Detail</title>
-<link rel="stylesheet" href="detail.css">
 
+<!-- favicon / meta -->
 <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- Google tag (gtag.js) -->
+<!-- CSS分離 -->
+<link rel="stylesheet" href="detail.css">
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-X7TTG6B29W');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-X7TTG6B29W');
 </script>
 </head>
+
 <body>
 
+<!-- HERO -->
 <section class="hero">
-  <img id="detail-hero-img" src="" alt="Product Hero">
+  <div class="container">
+    <img id="detail-hero-img" src="" alt="Product Hero">
+  </div>
 </section>
+
+<!-- 基本情報 -->
 <section class="section">
   <div class="container">
     <h2 id="detail-title"></h2>
@@ -33,7 +42,38 @@
   </div>
 </section>
 
-<button><a href="../index.html"></a></button>
+<!-- 追加情報 -->
+<section class="section">
+  <div class="container detail-grid" id="detail-grid">
+  </div>
+</section>
+
+<!-- 戻る -->
+<section class="section back-section">
+  <div class="container">
+    <a href="../index.html" class="back-button">Back to Top</a>
+  </div>
+</section>
+
 <script src="detail.js"></script>
+
+<script>
+fetch("detail.json")
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById("detail-grid");
+    data.blocks.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "detail-card";
+      box.innerHTML = `
+        <img src="${item.image}" alt="">
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      `;
+      grid.appendChild(box);
+    });
+  });
+</script>
+
 </body>
 </html>
