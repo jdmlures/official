@@ -1,0 +1,115 @@
+/* ================= ROOT ================= */
+:root{
+  --green:#154734;
+  --lime:#32cd32;
+  --red:#dc1c13;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  font-family:Georgia, serif;
+  color:var(--green);
+  background:#faf9f4;
+  line-height:1.6;
+}
+
+/* ================= HERO ================= */
+.hero{
+  padding:40px 0 0 0;
+}
+
+.hero img{
+  width:100%;
+  height:auto;
+  border-radius:6px;
+  display:block;
+}
+
+/* ================= SECTION ================= */
+.section{
+  padding:40px 0;
+  border-top:1px solid #ccc;
+}
+
+.container{
+  max-width:900px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ================= BASIC INFO ================= */
+#detail-title{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+#detail-price{
+  color:#bc002d;
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+#detail-desc{
+  margin-bottom:20px;
+}
+
+/* ================= GRID ================= */
+.detail-grid{
+  display:grid;
+  gap:30px;
+}
+
+/* ================= CARD ================= */
+.detail-card{
+  background:white;
+  padding:30px;
+  border-radius:6px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  box-sizing:border-box;
+}
+
+.detail-card img{
+  width:100%;
+  height:auto;
+  max-height:400px;
+  object-fit:cover;
+  border-radius:4px;
+  margin-bottom:20px;
+}
+
+.detail-card h3{
+  margin:0 0 10px 0;
+  font-size:20px;
+}
+
+/* ================= BACK BUTTON ================= */
+.back-section{
+  text-align:center;
+}
+
+.back-button{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  transition:.3s;
+}
+
+.back-button:hover{
+  opacity:0.8;
+}
+
+/* ================= MEDIA ================= */
+@media(max-width:768px){
+
+  #detail-title{ font-size:22px; }
+  #detail-price{ font-size:22px; }
+
+  .detail-card{ padding:20px; }
+
+}

@@ -1,0 +1,24 @@
+{
+  "blocks": [
+    {
+      "title": "Specification",
+      "image": "../img/spec1.jpg",
+      "text": "Length 120mm / Weight 25g / Floating"
+    },
+    {
+      "title": "Material",
+      "image": "../img/spec2.jpg",
+      "text": "High density resin body with reinforced hook hanger."
+    },
+    {
+      "title": "Action",
+      "image": "../img/spec3.jpg",
+      "text": "Wide wobbling action with natural rolling."
+    },
+    {
+      "title": "Country",
+      "image": "../img/spec4.jpg",
+      "text": "Made in Japan."
+    }
+  ]
+}
