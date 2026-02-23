@@ -27,6 +27,13 @@ body{
   display:block;
 }
 
+.container img{
+      width:100%;
+  height:auto;
+  border-radius:6px;
+  display:block;
+}
+
 /* ================= SECTION ================= */
 .section{
   padding:40px 0;
@@ -46,7 +53,7 @@ body{
 }
 
 #detail-price{
-  color:#bc002d;
+  color:red;
   font-size:26px;
   font-weight:900;
   margin-bottom:10px;
