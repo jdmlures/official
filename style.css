@@ -34,12 +34,12 @@ ul{ list-style:none; padding:0; margin:0; }
 
 /* ================= LOGO ================= */
 section.logo-section{
-  padding:10px 0;
+  /* padding:10px 0; */
   text-align:center;
 }
 
 .logo-section{
-  padding:40px 0;
+  /* padding:40px 0; */
   text-align:center;
 }
 .logo-section img{
@@ -299,23 +299,6 @@ section.logo-section{
 text-align: left;
 }
 
-
-/* .custom-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 900px; 
-  height: 300px;
-  margin-top: 20px;
-  text-decoration: none;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  border-radius: 10px;
-  overflow: hidden;
-} */
  
 
 .custom-button {
@@ -345,7 +328,7 @@ text-align: left;
 
   /* ミニマル */
   border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
 
   transition: transform .08s ease;
 }
@@ -368,6 +351,21 @@ text-align: left;
   padding: 0 15px;
 }
 
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;          /* 等間隔 */
+  flex-wrap: wrap;    /* スマホ対応 */
+  padding: 20px 0;
+}
+
+.payment-icons img,
+.payment-icons svg {
+  height: 28px;       /* 高さ統一 */
+  width: auto;
+  object-fit: contain;
+}
 
 /* スマホ対応 */
 @media(max-width:768px){

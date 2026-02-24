@@ -9,7 +9,7 @@
       "sold": "2026-02-21",
       "listed": "2026-02-15",
       "shipped": "GB",
-      "description": "Package 1 description",
+      "description": "Package 1 description with more details and information about the product.",
       "salesImages": ["img/logo.png"]
     },
     {
