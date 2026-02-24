@@ -1,0 +1,61 @@
+:root{
+  --green:#154734;
+  --lime:#32cd32;
+  --red:#dc1c13;
+}
+
+/* 共通スタイルは既存style.cssと統一 */
+
+/* メニュー画像を幅いっぱいに表示 */
+section img{
+  width:100%;
+  height:auto;
+  border-radius:6px; /* 既存の角丸を統一 */
+  display:block;
+  margin-bottom:60px; /* 下マージン大きく */
+}
+
+/* section内のコンテナ余白は既存と統一 */
+.container{
+  max-width:900px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* 見出しと文章のスタイルを既存と統一 */
+h2{
+  font-size:28px;
+  margin-bottom:10px;
+  color:var(--green);
+}
+
+p{
+  font-size:16px;
+  color:var(--green);
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+/* TOP画面に戻るボタン */
+.top-button{
+  display:inline-block;
+  background:var(--green);
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+  padding:12px 30px;
+  border-radius:6px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.top-button:hover{
+  opacity:0.85;
+}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  h2{ font-size:22px; }
+  p{ font-size:14px; }
+  section img{ max-height:400px; }
+}
