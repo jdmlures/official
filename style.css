@@ -20,7 +20,7 @@ ul{ list-style:none; padding:0; margin:0; }
 .top-bar{
   background:var(--green);
   color:white;
-  padding:8px 0;
+  padding:2px 0;
 }
 
 .top-inner{
@@ -33,6 +33,11 @@ ul{ list-style:none; padding:0; margin:0; }
 .flag{ width:20px; height:14px; vertical-align:middle; }
 
 /* ================= LOGO ================= */
+section.logo-section{
+  padding:10px 0;
+  text-align:center;
+}
+
 .logo-section{
   padding:40px 0;
   text-align:center;
@@ -40,7 +45,7 @@ ul{ list-style:none; padding:0; margin:0; }
 .logo-section img{
   max-width:100%;
   height:auto;
-  display:inline-block;
+  display:block;
 }
 
 /* ================= HERO ================= */
@@ -54,9 +59,17 @@ ul{ list-style:none; padding:0; margin:0; }
   transition:opacity 1s ease;
 }
 
+.hero .slide img[src*="dummy.jpg"] {
+  display: none;
+}
+
 .slide.active{ opacity:1; }
 
 .slide img{ width:100%; height:100%; object-fit:cover; }
+
+.free {
+  text-align: center;
+}
 
 /* ================= PRODUCT INFO ================= */
 .product-info{
@@ -77,10 +90,12 @@ ul{ list-style:none; padding:0; margin:0; }
   cursor:pointer;
 }
 
+
 .package{ color:white; font-size:18px; margin:0; }
 
+
 .price{
-  color:#bc002d;
+  color:red;
   font-size:32px;
   font-weight:900;
   margin:5px 0 0 0;
@@ -125,6 +140,32 @@ ul{ list-style:none; padding:0; margin:0; }
 
 .triangle.coming{ background:#999; }
 
+/* COMING SOON 用中央ボタン */
+.slide.coming .coming-soon-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  /* background: rgba(255,255,255,0.5); */
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  pointer-events: none; /* リンクではないので */
+  z-index: 10;
+}
+
+/* 三角フラグは既存 */
+.slide.coming .triangle {
+  display: block;
+}
+
+/* COMING SOON スライドに product-info が残っていたら非表示 */
+.slide.coming .product-info {
+  display: none !important;
+}
+
 /* ================= DOTS ================= */
 .dots{
   position:absolute;
@@ -152,7 +193,7 @@ ul{ list-style:none; padding:0; margin:0; }
 }
 
 /* ================= SECTIONS ================= */
-.section{ padding:40px 0; border-top:1px solid #ccc; }
+/* .section{ padding:40px 0; ; } */
 .container{ max-width:900px; margin:0 auto; padding:0 20px; }
 
 /* ================= CARD SLIDER ================= */
@@ -259,13 +300,13 @@ text-align: left;
 }
 
 
-.custom-button {
+/* .custom-button {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 900px;  /* 中央寄せで余白確保 */
+  max-width: 900px; 
   height: 300px;
   margin-top: 20px;
   text-decoration: none;
@@ -274,16 +315,49 @@ text-align: left;
   font-weight: bold;
   border-radius: 10px;
   overflow: hidden;
+} */
+ 
+
+.custom-button {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.custom-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  height: 240px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  /* ミニマル */
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+
+  transition: transform .08s ease;
 }
 
 .custom-button::before {
   content: "";
   position: absolute;
   top:0; left:0; width:100%; height:100%;
-  background-image: url('img/menu.png');  /* 任意の背景画像 */
-  background-size: cover;
-  background-position: center;
-  filter: blur(2px) brightness(0.6); /* ぼかし＋暗め */
+  background-image: url('img/0menu.png');  
+  background-size: 110%;
+  background-position: -16px 10px;
+  /* filter: blur(2px) brightness(0.6);  */
   z-index: 0;
 }
 
@@ -293,6 +367,7 @@ text-align: left;
   text-align: center;
   padding: 0 15px;
 }
+
 
 /* スマホ対応 */
 @media(max-width:768px){
