@@ -5,98 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JDMLures Detail</title>
 
-<!-- favicon / meta -->
-<link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-16x16.png">
+<link rel="stylesheet" href="detail.css">
+
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- CSS分離 -->
-<link rel="stylesheet" href="detail.css">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-X7TTG6B29W');
-</script>
 </head>
-
 <body>
 
-  <!-- 基本情報 -->
+<!-- 基本情報：価格横にBUYボタン -->
 <section class="section">
   <div class="container">
     <h2 id="detail-title"></h2>
-    <p id="detail-price"></p>
+
+    <div class="price-buy-wrapper">
+      <p id="detail-price">$ 160</p>
+      <a href="https://www.paypal.com/uk/digital-wallet/ways-to-pay/credit-services" class="paypal-btn" target="_blank">BUY</a>
+    </div>
+
     <p id="detail-desc"></p>
   </div>
 </section>
 
-<!-- HERO -->
+<!-- HERO / 商品画像 -->
 <section class="section hero">
   <div class="container">
     <img id="detail-hero-img" src="" alt="Product Hero">
   </div>
 </section>
 
-
-
-<!-- 追加情報 -->
+<!-- 追加画像 -->
 <section class="section">
-  <div class="container">
-    <img id="detail-hero-img" src="../img/img1.jpg" alt="">
-  </div>
+  <div class="container"><img src="../img/img1.jpg" alt=""></div>
+</section>
+<section class="section">
+  <div class="container"><img src="../img/img2.jpg" alt=""></div>
+</section>
+<section class="section">
+  <div class="container"><img src="../img/img4.jpg" alt=""></div>
+</section>
+<section class="section">
+  <div class="container"><img src="../img/img5.jpg" alt=""></div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <img id="detail-hero-img" src="../img/img2.jpg" alt="">
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <img id="detail-hero-img" src="../img/img4.jpg" alt="">
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <img id="detail-hero-img" src="../img/img5.jpg" alt="">
-  </div>
-</section>
-
-
-
-<!-- 戻る -->
+<!-- 戻る + BUYボタン（横並び統一） -->
 <section class="section back-section">
   <div class="container">
-    <a href="../index.html" class="back-button">Back to Top</a>
+    <div class="price-buy-wrapper">
+      <a href="../index.html" class="back-button">BACK</a>
+      <a href="https://www.paypal.com/uk/digital-wallet/ways-to-pay/credit-services" class="paypal-btn" target="_blank">BUY</a>
+    </div>
   </div>
 </section>
 
 <script src="detail.js"></script>
-
-<script>
-fetch("detail.json")
-  .then(res => res.json())
-  .then(data => {
-    const grid = document.getElementById("detail-grid");
-    data.blocks.forEach(item => {
-      const box = document.createElement("div");
-      box.className = "detail-card";
-      box.innerHTML = `
-        <img src="${item.image}" alt="">
-        <h3>${item.title}</h3>
-        <p>${item.text}</p>
-      `;
-      grid.appendChild(box);
-    });
-  });
-</script>
-
 </body>
 </html>
