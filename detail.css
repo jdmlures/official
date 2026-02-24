@@ -1,7 +1,5 @@
-/* ================= ROOT ================= */
 :root{
   --green:#154734;
-  --lime:#32cd32;
   --red:#dc1c13;
 }
 
@@ -15,88 +13,47 @@ body{
   line-height:1.6;
 }
 
-/* ================= HERO ================= */
-.hero{
-  padding:40px 0 0 0;
-}
+.section{ padding:30px 0; border-top:1px solid #ccc; }
+.container{ max-width:900px; margin:0 auto; padding:0 20px; }
 
-.hero img{
-  width:100%;
-  height:auto;
-  border-radius:6px;
-  display:block;
-}
-
-.container img{
-      width:100%;
-  height:auto;
-  border-radius:6px;
-  display:block;
-}
-
-/* ================= SECTION ================= */
-.section{
-  padding:40px 0;
-  border-top:1px solid #ccc;
-}
-
-.container{
-  max-width:900px;
-  margin:0 auto;
-  padding:0 20px;
-}
-
-/* ================= BASIC INFO ================= */
-#detail-title{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
+#detail-title{ font-size:28px; margin-bottom:10px; }
 #detail-price{
   color:red;
   font-size:26px;
   font-weight:900;
-  margin-bottom:10px;
+  margin:0;
+  width:120px;
+  text-align:center; /* 文字中央揃え */
 }
 
-#detail-desc{
-  margin-bottom:20px;
+/* 価格横・フッター横 両方共通 */
+.price-buy-wrapper{
+  display:flex;
+  align-items:center;
+  gap:20px;       /* 価格とボタン間隔・フッターも同じ */
+  margin-top:10px;
 }
 
-/* ================= GRID ================= */
-.detail-grid{
-  display:grid;
-  gap:30px;
-}
-
-/* ================= CARD ================= */
-.detail-card{
-  background:white;
-  padding:30px;
+/* BUYボタン */
+.paypal-btn{
+  background-color:#003087;
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+  padding:10px 24px;
   border-radius:6px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  box-sizing:border-box;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.detail-card img{
-  width:100%;
-  height:auto;
-  max-height:400px;
-  object-fit:cover;
-  border-radius:4px;
-  margin-bottom:20px;
-}
+/* .paypal-btn:hover{
+  background-color:#0057B7;
+  transform: translateY(-1px);
+} */
 
-.detail-card h3{
-  margin:0 0 10px 0;
-  font-size:20px;
-}
-
-/* ================= BACK BUTTON ================= */
-.back-section{
-  text-align:center;
-}
-
+/* BACKボタン */
 .back-button{
   display:inline-block;
   padding:12px 24px;
@@ -106,17 +63,55 @@ body{
   border-radius:6px;
   transition:.3s;
 }
+/* .back-button:hover{ opacity:0.8; } */
 
-.back-button:hover{
-  opacity:0.8;
+/* HERO */
+.hero img, .container img{
+  width:100%;
+  height:auto;
+  border-radius:6px;
+  display:block;
 }
 
-/* ================= MEDIA ================= */
+/* GRID / CARD */
+.detail-grid{ display:grid; gap:30px; }
+.detail-card{
+  background:white; padding:30px; border-radius:6px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  box-sizing:border-box;
+}
+.detail-card img{
+  width:100%; height:auto; max-height:400px;
+  object-fit:cover; border-radius:4px; margin-bottom:20px;
+}
+.detail-card h3{ margin:0 0 10px 0; font-size:20px; }
+
+.paypal-btn{
+  display:inline-block;
+  margin-left:10px 20px;
+  background:#003087;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  transition:.3s;
+}
+
+.price-buy-wrapper .paypal-btn{
+    margin-left: 31px;
+}
+
+
+
 @media(max-width:768px){
-
   #detail-title{ font-size:22px; }
-  #detail-price{ font-size:22px; }
-
+  #detail-price{ font-size:30px; }
   .detail-card{ padding:20px; }
 
+  /* スマホでも横並び維持 */
+  .price-buy-wrapper{
+    flex-direction:row;
+    justify-content:center;
+  }
+
+  .paypal-btn{ padding:10px 82px; }
 }
