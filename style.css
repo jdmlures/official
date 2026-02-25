@@ -192,6 +192,50 @@ section.logo-section{
   transform:scale(1.3);
 }
 
+/* ================= VIP BANNER ================= */
+.vip-section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.vip-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px; /* 既存 index.html と同じ余白 */
+}
+
+.vip-link {
+  display: block;
+  width: 100%;
+}
+
+.vip-banner {
+  width: 100%;
+  max-width: 900px; /* デスクトップ幅で最大 */
+  height: auto;
+  display: block;
+  border-radius: 12px; /* 他セクションと統一感 */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3); /* HEROやCUSTOM BUTTONに近い雰囲気 */
+  transition: transform 0.2s ease;
+}
+
+.vip-banner:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= MEDIA QUERY: iPhone SE 等小画面対応 ================= */
+@media (max-width: 375px) {
+  .vip-section {
+    padding: 30px 10px;
+  }
+
+  .vip-banner {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+}
+
+
 /* ================= NEWS ================= */
 .news ul li{ padding: 10px 0;}
 /* ================= SECTIONS ================= */
