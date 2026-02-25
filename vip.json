@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "number": "V-1",
+    "name": "Custom Lure",
+    "price": 45,
+    "desc": "Limited edition red/blue pattern lure.",
+    "hero_img": "../img/img1.jpg",
+    "imgs": [
+      "vip/img/img2.jpg",
+      "vip/img/img3.jpg",
+      "vip/img/img4.jpg"
+    ],
+    "paypal_link": "https://www.paypal.com/buy?item=1"
+  },
+  {
+    "id": 2,
+    "number": "V-2",
+    "name": "Custom Lure",
+    "price": 50,
+    "desc": "Special release collectible lure.",
+    "hero_img": "vip/img/img5.jpg",
+    "imgs": [
+      "vip/img/img6.jpg",
+      "vip/img/img7.jpg",
+      "vip/img/img8.jpg"
+    ],
+    "paypal_link": "https://www.paypal.com/buy?item=2"
+  }
+]
