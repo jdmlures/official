@@ -72,32 +72,33 @@ h1, h2{
 }
 
 /* ================= CARD SLIDER ================= */
+
 .card-slider{
   display:flex;
-  gap:10px;
+  gap:12px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding:0;
 }
 
 .card{
-  flex-shrink:0;
-  scroll-snap-align:start;
-  background:white;
-  border-radius:6px;
-  padding:10px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.2);
-  min-width:180px;
-  max-width:200px;
+  flex:0 0 90%;
+  scroll-snap-align:center;
+  padding:0;
+  margin:0;
+  background:none;
+  box-shadow:none;
+  height:auto;           /* ← 高さ固定を完全解除 */
 }
 
 .card img{
   width:100%;
   height:auto;
-  border-radius:4px;
   display:block;
+  object-fit:contain;    /* ← 切れないように */
+  height: 300px;
 }
+
 
 .footer{
   margin-top:60px;
