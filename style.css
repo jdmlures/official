@@ -192,6 +192,8 @@ section.logo-section{
   transform:scale(1.3);
 }
 
+/* ================= NEWS ================= */
+.news ul li{ padding: 10px 0;}
 /* ================= SECTIONS ================= */
 /* .section{ padding:40px 0; ; } */
 .container{ max-width:900px; margin:0 auto; padding:0 20px; }
