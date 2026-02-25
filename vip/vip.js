@@ -1,34 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const id = parseInt(params.get("id"), 10) || 1;
+const container = document.getElementById("vip-products-container");
 
-  fetch("vip.json")
-    .then(res => res.json())
-    .then(data => {
-      const item = data.find(i => i.id === id);
-      if (!item) return;
+fetch("vip.json")
+  .then(res => res.json())
+  .then(data => {
+    const products = data.vipProducts;
+    products.forEach((item, idx) => {
+      const section = document.createElement("section");
+      section.className = "section vip-product";
 
-      // 番号 + 商品名
-      document.getElementById("detail-title").textContent = `# ${item.number} ${item.name}`;
+      section.innerHTML = `
+        <div class="container">
+          <h2># V-${idx+1} ${item.title}</h2>
 
-      // 価格
-      document.getElementById("detail-price").textContent = `$ ${item.price}`;
+          <div class="price-buy-wrapper">
+            <p>$${item.price}</p>
+            <a href="${item.paypalLink}" class="paypal-btn" target="_blank">BUY</a>
+          </div>
 
-      // 説明
-      document.getElementById("detail-desc").textContent = item.desc;
+          <p>${item.description}</p>
 
-      // メイン画像
-      document.getElementById("detail-hero-img").src = item.hero_img;
+          <div class="card-slider">
+            ${item.images.map(img => `<div class="card"><img src="${img}" alt=""></div>`).join('')}
+          </div>
+        </div>
+      `;
 
-      // サブ画像
-      item.imgs.forEach((src, index) => {
-        const imgEl = document.getElementById(`detail-img-${index}`);
-        if (imgEl) imgEl.src = src;
-      });
-
-      // BUYボタンリンク
-      const buyBtns = document.querySelectorAll("#detail-buy-btn, #detail-buy-btn-bottom");
-      buyBtns.forEach(btn => btn.href = item.paypal_link);
-    })
-    .catch(err => console.error("VIP JSON load error:", err));
-});
+      container.appendChild(section);
+    });
+  })
+  .catch(err => console.error("VIP JSON load error:", err));

@@ -24,29 +24,31 @@ body{
   padding:0 20px;
 }
 
-#detail-title{
-  font-size:28px;
+h1, h2{
   margin-bottom:10px;
+  color:var(--green);
 }
 
-#detail-price{
-  color:red;
-  font-size:26px;
-  font-weight:900;
-  margin:0;
-  width:120px;
-  text-align:center;
+/* ================= VIP PRODUCT ================= */
+.vip-product{
+  margin-bottom:50px;
 }
 
-/* 価格＋BUY */
 .price-buy-wrapper{
   display:flex;
   align-items:center;
   gap:20px;
   margin-top:10px;
+  flex-wrap:wrap;
 }
 
-/* BUY */
+.price-buy-wrapper p{
+  font-weight:bold;
+  font-size:20px;
+  color:var(--red);
+  margin:0;
+}
+
 .paypal-btn{
   background:#003087;
   color:#fff;
@@ -60,7 +62,6 @@ body{
   display:inline-block;
 }
 
-/* BACK */
 .back-button{
   display:inline-block;
   padding:12px 24px;
@@ -70,49 +71,46 @@ body{
   border-radius:6px;
 }
 
-/* HERO */
-.hero img,
-.container img{
+/* ================= CARD SLIDER ================= */
+.card-slider{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.card{
+  flex-shrink:0;
+  scroll-snap-align:start;
+  background:white;
+  border-radius:6px;
+  padding:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+  min-width:180px;
+  max-width:200px;
+}
+
+.card img{
   width:100%;
   height:auto;
-  border-radius:6px;
+  border-radius:4px;
   display:block;
 }
 
-/* ===== 支払いロゴ ===== */
-
-.payment-icons{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap: 11px;
-  flex-wrap:wrap;
+.footer{
+  margin-top:60px;
+  font-size:14px;
+  opacity:0.7;
+  border-top:1px solid #ddd;
   padding:20px 0;
+  text-align:center;
 }
-
-.payment-icons img,
-.payment-icons svg{
-  height:29px;
-  width:auto;
-  display:block;
-  flex-shrink:0;
-}
-
-.footer{ margin-top:60px; font-size:14px; opacity:0.7; border-top:1px solid #ddd; padding-top:20px; text-align: center; }
 
 /* スマホ */
 @media(max-width:768px){
-
-  #detail-title{
-    font-size:22px;
-  }
-
-  #detail-price{
-    font-size:30px;
-  }
-
   .price-buy-wrapper{
-    flex-direction:row;
     justify-content:center;
   }
 
