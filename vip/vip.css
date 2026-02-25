@@ -37,14 +37,14 @@ h1, h2{
 .price-buy-wrapper{
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:60px;
   margin-top:10px;
   flex-wrap:wrap;
 }
 
 .price-buy-wrapper p{
   font-weight:bold;
-  font-size:20px;
+  font-size:60px;
   color:var(--red);
   margin:0;
 }
