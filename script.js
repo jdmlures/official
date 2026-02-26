@@ -18,10 +18,11 @@ function createSlides(data){
   slides = [];
 
   data.forEach((item)=>{
-    // STOCK スライドのみ通常ループで生成
-    if(item.status === "stock"){
+    // STOCK スライドのみ通常ループで生成、購入済みは非表示
+    if(item.status === "stock" && !localStorage.getItem(`purchased_${item.id}`)) {
       const slide = document.createElement("div");
       slide.className = "slide";
+      slide.id = `hero-slide-${item.id}`;
 
       const img = document.createElement("img");
       img.src = item.image;
@@ -44,7 +45,6 @@ function createSlides(data){
       info.style.cursor = "pointer";
       slide.appendChild(info);
 
-      // TRIANGLE
       const tri = document.createElement("div");
       tri.className = "triangle";
       const span = document.createElement("span");
@@ -57,7 +57,6 @@ function createSlides(data){
     }
   });
 
-  // 自動スライド初期化
   showSlide(0);
   startAutoSlide();
   addSwipeSupport();
@@ -68,7 +67,6 @@ function appendComingSoonSlide() {
   const slide = document.createElement("div");
   slide.className = "slide coming";
 
-  // 左上 TRIANGLE
   const tri = document.createElement("div");
   tri.className = "triangle coming";
   const span = document.createElement("span");
@@ -76,13 +74,11 @@ function appendComingSoonSlide() {
   tri.appendChild(span);
   slide.appendChild(tri);
 
-  // 中央半透明ボタン
   const button = document.createElement("div");
   button.className = "coming-soon-btn";
   button.textContent = "COMING SOON";
   slide.appendChild(button);
 
-  // HERO に追加
   slidesContainer.appendChild(slide);
   slides.push(slide);
 }
@@ -117,14 +113,14 @@ function addSwipeSupport(){
 function createCardSlider(data){
   cardSlider.innerHTML = "";
   data.forEach(item=>{
-    if(item.status==="dummy") return; // COMING SOON はカードに表示しない
+    if(item.status==="dummy") return;
 
     const card=document.createElement("div");
     card.className="card";
 
     const img=document.createElement("img");
     if(item.salesImages && item.salesImages.length>0){
-      img.src=item.salesImages[0]; // salesImages の先頭を表示
+      img.src=item.salesImages[0];
     }
     card.appendChild(img);
 
@@ -161,7 +157,7 @@ setInterval(updateTime,1000);
 fetch("package.json")
   .then(res=>res.json())
   .then(data=>{
-    createSlides(data.packages);       // stock スライド生成
-    appendComingSoonSlide();            // COMING SOON 独立生成
-    createCardSlider(data.packages);    // カード生成
+    createSlides(data.packages);
+    appendComingSoonSlide();
+    createCardSlider(data.packages);
   });
