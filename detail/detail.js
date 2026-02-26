@@ -1,14 +1,15 @@
-// URLからid取得
+// ====================== URL PARAMS ======================
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"), 10);
 
+// ====================== LOAD PACKAGE DATA ======================
 fetch("../package.json")
   .then(res => res.json())
   .then(data => {
     const item = data.packages.find(p => p.id === id);
     if (!item) return console.warn("Item not found in JSON");
 
-    const basePath = "../"; // detail.html から画像表示用パス補正
+    const basePath = "../";
 
     // 画像差し替え
     document.getElementById("detail-hero-img").src = basePath + item.image;
@@ -18,12 +19,12 @@ fetch("../package.json")
       if (item.images[2]) document.getElementById("detail-img-3").src = basePath + item.images[2];
     }
 
-    // タイトル・価格・説明文
+    // タイトル・価格・説明
     document.getElementById("detail-title").textContent = `Package #${item.package}`;
     document.getElementById("detail-price").textContent = `$ ${item.price}`;
     document.getElementById("detail-desc").textContent = item.description || "No description available";
 
-    // PayPalボタン描画（上下2箇所）
+    // ====================== PayPal BUTTON ======================
     const renderPayPalButton = (containerId) => {
       paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', label: 'paypal', height: 48 },
@@ -38,32 +39,34 @@ fetch("../package.json")
         onApprove: (data, actions) => {
           return actions.order.capture().then(details => {
             alert("Payment completed by " + details.payer.name.given_name);
-            // 購入後のUI反映
             markAsPurchased(item.id);
           });
         }
       }).render(`#${containerId}`);
     };
 
-    renderPayPalButton("paypal-button-container");       // 上部
-    renderPayPalButton("paypal-button-container-bottom"); // 下部
+    renderPayPalButton("paypal-button-container");
+    renderPayPalButton("paypal-button-container-bottom");
+
+    // 初期表示時も購入済みならボタンと HERO 非表示
+    if(localStorage.getItem(`purchased_${item.id}`)){
+      markAsPurchased(item.id);
+    }
   })
   .catch(err => console.error("Failed to load JSON:", err));
 
-
-// 購入済みマーク用
+// ====================== PURCHASE HANDLER ======================
 function markAsPurchased(id) {
-  // HERO非表示
-  const hero = document.getElementById("detail-hero-img");
-  if (hero) hero.style.display = "none";
+  // detail.html HERO 非表示
+  const heroImg = document.getElementById("detail-hero-img");
+  if(heroImg) heroImg.style.display = "none";
 
-  // 上下BUYボタン非表示
-  const buttons = [
-    document.getElementById("paypal-button-container"),
-    document.getElementById("paypal-button-container-bottom")
-  ];
-  buttons.forEach(btn => { if (btn) btn.style.display = "none"; });
+  // 上下 PayPal ボタン非表示
+  ["paypal-button-container","paypal-button-container-bottom"].forEach(cid=>{
+    const btn = document.getElementById(cid);
+    if(btn) btn.style.display = "none";
+  });
 
-  // ここで必要なら localStorage に購入済みフラグも保存可能
+  // localStorage に購入済みフラグ
   localStorage.setItem(`purchased_${id}`, "true");
 }

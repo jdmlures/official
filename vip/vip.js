@@ -1,68 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const container = document.getElementById("vip-products-container");
+  function initializePayPal(buttonContainerId, sectionId) {
 
-  fetch("vip.json")
-    .then(res => res.json())
-    .then(data => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
 
-      const products = data.vipProducts;
+    const priceElement = section.querySelector(".price");
+    if (!priceElement) return;
 
-      products.forEach((item, idx) => {
+    const priceText = priceElement.textContent.trim();
+    const priceValue = priceText.replace("$", "");
 
-        const section = document.createElement("section");
-        section.className = "section vip-product";
+    paypal.Buttons({
 
-        section.innerHTML = `
-          <div class="container">
-            <h2># V-${idx+1} ${item.title}</h2>
+      style: {
+        layout: "vertical",
+        color: "gold",
+        shape: "rect",
+        label: "paypal"
+      },
 
-            <div class="price-buy-wrapper">
-              <p class="price">$${item.price}</p>
-              <div class="paypal-wrapper">
-                <div id="paypal-button-${item.id}"></div>
-              </div>
-            </div>
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: priceValue
+            }
+          }]
+        });
+      },
 
-            <p class="description">${item.description}</p>
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
 
-            <div class="card-slider">
-              ${item.images.map(img =>
-                `<div class="card"><img src="${img}" alt=""></div>`
-              ).join('')}
-            </div>
-          </div>
-        `;
+          alert("Sandbox Purchase Completed by " + details.payer.name.given_name);
 
-        container.appendChild(section);
+          // ==========================
+          // 購入完了後の挙動
+          // ==========================
 
-        // ✅ PayPalボタン描画（高さ指定重要）
-        paypal.Buttons({
-          style: {
-            layout: 'vertical',
-            label: 'paypal',
-            height: 48
-          },
-          createOrder: function(data, actions) {
-            return actions.order.create({
-              purchase_units: [{
-                amount: {
-                  value: item.price.toString()
-                },
-                description: item.title
-              }]
-            });
-          },
-          onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-              alert("Payment completed by " + details.payer.name.given_name);
-            });
+          const wrapper = section.querySelector(".price-buy-wrapper");
+          if (wrapper) {
+            wrapper.style.display = "none";
           }
-        }).render(`#paypal-button-${item.id}`);
 
-      });
+          const soldMessage = document.createElement("p");
+          soldMessage.textContent = "SOLD";
+          soldMessage.style.color = "#dc1c13";
+          soldMessage.style.fontWeight = "bold";
+          soldMessage.style.fontSize = "24px";
+          soldMessage.style.marginTop = "10px";
 
-    })
-    .catch(err => console.error("VIP JSON load error:", err));
+          section.querySelector(".container").appendChild(soldMessage);
+
+        });
+      },
+
+      onError: function (err) {
+        console.error("PayPal Error:", err);
+        alert("Payment Error Occurred");
+      }
+
+    }).render("#" + buttonContainerId);
+  }
+
+  // 既存HTMLに合わせる
+  initializePayPal("paypal-button-1", "vip-section-1");
+  initializePayPal("paypal-button-2", "vip-section-2");
 
 });

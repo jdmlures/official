@@ -1,32 +1,18 @@
 {
-  "vipProducts": [
+  "packages": [
     {
       "id": 1,
-      "title": "Custom Lure Red/Blue",
-      "price": 45,
-      "paypalLink": "https://www.paypal.com/buy?item=1",
-      "description": "Limited edition red/blue pattern lure.",
-      "images": [
-        "../img/img1.jpg",
-        "../img/img2.jpg",
-        "../img/img3.jpg",
-        "../img/img4.jpg",
-        "../img/img5.jpg"
-      ]
+      "package": 1,
+      "price": 35,
+      "description": "Custom Lure Red/Blue",
+      "images": ["../img/img1.jpg","../img/img2.jpg"]
     },
     {
       "id": 2,
-      "title": "Custom Lure Black/Gold",
-      "price": 60,
-      "paypalLink": "https://www.paypal.com/buy?item=2",
-      "description": "Limited edition black/gold lure with unique pattern.",
-      "images": [
-        "../img/img1.jpg",
-        "../img/img3.jpg",
-        "../img/img2.jpg",
-        "../img/img5.jpg",
-        "../img/img4.jpg"
-      ]
+      "package": 2,
+      "price": 40,
+      "description": "Custom Lure Green/Yellow",
+      "images": ["../img/img3.jpg","../img/img4.jpg"]
     }
   ]
 }

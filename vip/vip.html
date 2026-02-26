@@ -3,47 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP Products | JDMLures</title>
+<title>VIP Packages</title>
 <link rel="stylesheet" href="vip.css">
-
-<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-X7TTG6B29W');
-</script>
-
-<!-- ✅ PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&locale=en_US"></script>
-
 </head>
 <body>
+<header>
+  <h1>VIP Exclusive Lures</h1>
+</header>
 
-<section class="section vip-header">
+<section class="section vip-product" id="vip-section-1">
   <div class="container">
-    <h1>VIP PRODUCTS</h1>
+    <h2># V-1 Custom Lure Red/Blue</h2>
+    <div class="price-buy-wrapper">
+      <p class="price">$35</p>
+      <div class="paypal-wrapper">
+        <div id="paypal-button-1"></div>
+      </div>
+    </div>
+    <p class="description">Limited edition red/blue pattern lure.</p>
+    <div class="card-slider">
+      <div class="card"><img src="../img/img1.jpg" alt=""></div>
+      <div class="card"><img src="../img/img2.jpg" alt=""></div>
+    </div>
   </div>
 </section>
 
-<div id="vip-products-container">
-</div>
-
-<section class="section">
-  <div class="container" style="text-align:center;">
-    <a href="../index.html" class="back-button">BACK</a>
+<section class="section vip-product" id="vip-section-2">
+  <div class="container">
+    <h2># V-2 Custom Lure Green/Yellow</h2>
+    <div class="price-buy-wrapper">
+      <p class="price">$40</p>
+      <div class="paypal-wrapper">
+        <div id="paypal-button-2"></div>
+      </div>
+    </div>
+    <p class="description">Limited edition green/yellow pattern lure.</p>
+    <div class="card-slider">
+      <div class="card"><img src="../img/img3.jpg" alt=""></div>
+      <div class="card"><img src="../img/img4.jpg" alt=""></div>
+    </div>
   </div>
 </section>
 
-<div class="footer">
-  <p>© 2026 JDM Lures All Rights Reserved.</p>
-</div>
+<footer class="footer">
+  &copy; 2026 JDMLures VIP
+</footer>
 
+<!-- ✅ locale=en_US 追加 -->
+<script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&intent=capture&locale=en_US"></script>
 <script src="vip.js"></script>
 </body>
 </html>

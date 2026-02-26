@@ -3,8 +3,6 @@
   --red:#dc1c13;
 }
 
-html{ scroll-behavior:smooth; }
-
 body{
   margin:0;
   font-family:Georgia, serif;
@@ -22,100 +20,84 @@ body{
   max-width:900px;
   margin:0 auto;
   padding:0 20px;
+  box-sizing:border-box;
 }
 
-h1, h2{
-  margin-bottom:10px;
-  color:var(--green);
-}
-
-/* ================= VIP PRODUCT ================= */
 .vip-product{
   margin-bottom:50px;
 }
 
+/* ============================= */
+/* 価格＋購入ボタン 横並び固定 */
+/* ============================= */
+
 .price-buy-wrapper{
   display:flex;
   align-items:center;
-  gap:60px;
+  gap:40px;
   margin-top:10px;
-  flex-wrap:wrap;
+  width:100%;
+  box-sizing:border-box;
 }
 
-.price-buy-wrapper p{
+.price{
   font-weight:bold;
   font-size:60px;
   color:var(--red);
   margin:0;
-}
-
-.paypal-btn{
-  background:#003087;
-  color:#fff;
-  font-weight:bold;
-  font-size:16px;
-  padding:10px 24px;
-  border-radius:4px;
-  text-decoration:none;
   white-space:nowrap;
-  cursor:pointer;
-  display:inline-block;
+  flex-shrink:0;
 }
 
-.back-button{
-  display:inline-block;
-  padding:12px 24px;
-  background:var(--green);
-  color:white;
-  text-decoration:none;
-  border-radius:4px;
+/* ★ ここが重要 */
+.paypal-wrapper{
+  flex:1;
+  max-width:100%;
+  min-width:0;              /* ← これで突き抜け防止 */
+  overflow:hidden;
 }
 
-/* ================= CARD SLIDER ================= */
+/* iframeを親幅に完全収める */
+.paypal-wrapper iframe{
+  width:100% !important;
+  max-width:100% !important;
+}
+
+/* ============================= */
+/* カードスライダー（既存維持） */
+/* ============================= */
 
 .card-slider{
   display:flex;
   gap:12px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
-  padding:0;
 }
 
 .card{
   flex:0 0 90%;
   scroll-snap-align:center;
-  padding:0;
-  margin:0;
-  background:none;
-  box-shadow:none;
-  height:auto;           /* ← 高さ固定を完全解除 */
 }
 
 .card img{
   width:100%;
-  height:auto;
+  height:300px;
+  object-fit:contain;
   display:block;
-  object-fit:contain;    /* ← 切れないように */
-  height: 300px;
 }
 
-
-.footer{
-  margin-top:60px;
-  font-size:14px;
-  opacity:0.7;
-  border-top:1px solid #ddd;
-  padding:20px 0;
-  text-align:center;
+.description{
+  margin-top:15px;
 }
 
-/* スマホ */
 @media(max-width:768px){
-  .price-buy-wrapper{
-    justify-content:center;
+
+  .price{
+    font-size:40px;
   }
 
-  .paypal-btn{
-    padding:10px 82px;
+  .price-buy-wrapper{
+    gap:20px;
   }
+
 }
