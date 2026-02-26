@@ -1,30 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ========================= */
-  /* SOLD状態チェック関数 */
+  /* セクション完全削除 */
+  /* ========================= */
+
+  function removeProduct(sectionId) {
+
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const product = section.closest(".vip-product");
+    if (!product) return;
+
+    product.remove(); // DOMから完全削除
+  }
+
+  /* ========================= */
+  /* SOLD状態チェック */
   /* ========================= */
 
   function checkSoldState(sectionId) {
-    const isSold = localStorage.getItem("sold_" + sectionId);
 
-    if (isSold === "true") {
-      const section = document.getElementById(sectionId);
-      if (!section) return;
-
-      const product = section.closest(".vip-product");
-      if (product) {
-        product.style.display = "none";
-      }
-
-      const soldMessage = document.createElement("div");
-      soldMessage.textContent = "SOLD OUT";
-      soldMessage.style.textAlign = "center";
-      soldMessage.style.fontSize = "40px";
-      soldMessage.style.fontWeight = "900";
-      soldMessage.style.color = "#dc1c13";
-      soldMessage.style.margin = "60px 0";
-
-      section.parentNode.insertBefore(soldMessage, section);
+    if (localStorage.getItem("sold_" + sectionId) === "true") {
+      removeProduct(sectionId);
     }
   }
 
@@ -33,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ========================= */
 
   function initializePayPal(buttonContainerId, sectionId) {
+
+    // 既にSOLDならボタン生成しない
+    if (localStorage.getItem("sold_" + sectionId) === "true") return;
 
     const section = document.getElementById(sectionId);
     if (!section) return;
@@ -61,30 +62,13 @@ document.addEventListener("DOMContentLoaded", function () {
       },
 
       onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
+        return actions.order.capture().then(function () {
 
-          alert("Sandbox Purchase Completed by " + details.payer.name.given_name);
-
-          /* ========================= */
-          /* SOLD状態保存 */
-          /* ========================= */
-
+          // SOLD保存
           localStorage.setItem("sold_" + sectionId, "true");
 
-          const product = section.closest(".vip-product");
-          if (product) {
-            product.style.display = "none";
-          }
-
-          const soldMessage = document.createElement("div");
-          soldMessage.textContent = "SOLD OUT";
-          soldMessage.style.textAlign = "center";
-          soldMessage.style.fontSize = "40px";
-          soldMessage.style.fontWeight = "900";
-          soldMessage.style.color = "#dc1c13";
-          soldMessage.style.margin = "60px 0";
-
-          section.parentNode.insertBefore(soldMessage, section);
+          // 即削除
+          removeProduct(sectionId);
 
         });
       },
@@ -98,15 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ========================= */
-  /* 初期チェック */
+  /* 初期処理 */
   /* ========================= */
 
   checkSoldState("vip-section-1");
   checkSoldState("vip-section-2");
-
-  /* ========================= */
-  /* ボタン生成 */
-  /* ========================= */
 
   initializePayPal("paypal-button-1", "vip-section-1");
   initializePayPal("paypal-button-2", "vip-section-2");
