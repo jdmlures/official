@@ -18,7 +18,7 @@ function createSlides(data){
   slides = [];
 
   data.forEach((item)=>{
-    // STOCK スライドのみ通常ループで生成、購入済みは非表示
+    // STOCK スライドのみ生成、購入済みは非表示
     if(item.status === "stock" && !localStorage.getItem(`purchased_${item.id}`)) {
       const slide = document.createElement("div");
       slide.className = "slide";
@@ -62,7 +62,7 @@ function createSlides(data){
   addSwipeSupport();
 }
 
-// ====================== COMING SOON スライド追記 ======================
+// ====================== COMING SOON ======================
 function appendComingSoonSlide() {
   const slide = document.createElement("div");
   slide.className = "slide coming";
@@ -140,7 +140,16 @@ function createCardSlider(data){
     metaShipped.textContent=`✈️ Shipped to ${getFlagEmoji(item.shipped)}`;
     card.appendChild(metaShipped);
 
-    cardSlider.appendChild(card);
+    // HISTORY のカードは手動リンク追加可能
+    if(item.historyLink) {
+      const link = document.createElement("a");
+      link.href = item.historyLink;
+      link.target = "_blank";
+      link.appendChild(card);
+      cardSlider.appendChild(link);
+    } else {
+      cardSlider.appendChild(card);
+    }
   });
 }
 
