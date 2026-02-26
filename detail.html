@@ -4,60 +4,116 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JDMLures Detail</title>
-
 <link rel="stylesheet" href="detail.css">
 
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X7TTG6B29W');
+</script>
+
+<!-- ✅ PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&locale=en_US"></script>
 
 </head>
 <body>
 
-<!-- 基本情報：価格横にBUYボタン -->
+<!-- 商品情報 -->
 <section class="section">
   <div class="container">
-    <h2 id="detail-title"></h2>
+    <h2 id="detail-title">JDM Custom Lure</h2>
 
     <div class="price-buy-wrapper">
-      <p id="detail-price">$ 160</p>
-      <a href="https://www.paypal.com/uk/digital-wallet/ways-to-pay/credit-services" class="paypal-btn" target="_blank">BUY</a>
+      <p id="detail-price">$ 0</p>
+      <!-- 上部PayPalボタン描画用 -->
+      <div id="paypal-button-container"></div>
     </div>
 
-    <p id="detail-desc"></p>
+    <p id="detail-desc">Loading description...</p>
   </div>
 </section>
 
-<!-- HERO / 商品画像 -->
+<!-- HERO -->
 <section class="section hero">
   <div class="container">
-    <img id="detail-hero-img" src="" alt="Product Hero">
+    <img id="detail-hero-img" src="../img/img1.jpg" alt="Product Hero">
   </div>
 </section>
 
-<!-- 追加画像 -->
+<!-- 他画像セクション -->
 <section class="section">
-  <div class="container"><img src="../img/img1.jpg" alt=""></div>
-</section>
-<section class="section">
-  <div class="container"><img src="../img/img2.jpg" alt=""></div>
-</section>
-<section class="section">
-  <div class="container"><img src="../img/img4.jpg" alt=""></div>
-</section>
-<section class="section">
-  <div class="container"><img src="../img/img5.jpg" alt=""></div>
+  <div class="container">
+    <img id="detail-img-1" src="../img/img2.jpg" alt="">
+  </div>
 </section>
 
-<!-- 戻る + BUYボタン（横並び統一） -->
+<section class="section">
+  <div class="container">
+    <img id="detail-img-2" src="../img/img4.jpg" alt="">
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <img id="detail-img-3" src="../img/img5.jpg" alt="">
+  </div>
+</section>
+
+<!-- 支払いロゴ & BACKボタン -->
 <section class="section back-section">
+  <div class="payment-icons">
+    <!-- PayPal -->
+    <svg viewBox="0 0 140 40" aria-label="PayPal" role="img">
+      <g transform="translate(0,4)">
+        <path fill="#003087" d="M18 4c6 0 10 4 9 9s-5 9-11 9h-4l-2 12H4l5-30h9z"/>
+        <path fill="#009CDE" d="M22 4c5 0 8 3 7 7s-4 7-9 7h-5l-2 12H6l4-26h12z"/>
+      </g>
+      <text x="42" y="26" font-family="Arial, sans-serif" font-size="22" font-weight="700">
+        <tspan fill="#003087">Pay</tspan>
+        <tspan fill="#009CDE">Pal</tspan>
+      </text>
+    </svg>
+
+    <!-- VISA -->
+    <img src="../custom/c_img/visa.png" alt="Visa">
+
+    <!-- Mastercard -->
+    <svg viewBox="0 0 48 32" aria-label="Mastercard">
+      <circle cx="18" cy="16" r="10" fill="#EB001B"/>
+      <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
+      <path fill="#FF5F00" d="M24 6a10 10 0 000 20 10 10 0 000-20z"/>
+    </svg>
+
+    <!-- American Express -->
+    <svg viewBox="0 0 60 38" aria-label="American Express">
+      <rect width="60" height="38" fill="#2E77BB"/>
+      <text x="30" y="16" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">
+        AMERICAN
+      </text>
+      <text x="30" y="28" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">
+        EXPRESS
+      </text>
+    </svg>
+  </div>
+
   <div class="container">
     <div class="price-buy-wrapper">
       <a href="../index.html" class="back-button">BACK</a>
-      <a href="https://www.paypal.com/uk/digital-wallet/ways-to-pay/credit-services" class="paypal-btn" target="_blank">BUY</a>
+      <!-- 下部PayPalボタン描画用 -->
+      <div id="paypal-button-container-bottom"></div>
     </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 JDM Lures  All Rights Reserved.</p>
   </div>
 </section>
 
