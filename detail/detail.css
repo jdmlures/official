@@ -59,7 +59,7 @@ body{
   background:var(--green);
   color:white;
   text-decoration:none;
-  border-radius:6px;
+  border-radius:4px;
 }
 
 /* HERO & 他画像 */
@@ -67,7 +67,7 @@ body{
 .container img{
   width:100%;
   height:auto;
-  border-radius:6px;
+  border-radius:4px;
   display:block;
 }
 
