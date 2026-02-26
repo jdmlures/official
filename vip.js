@@ -1,34 +1,114 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const id = parseInt(params.get("id"), 10) || 1;
+document.addEventListener("DOMContentLoaded", function () {
 
-  fetch("vip.json")
-    .then(res => res.json())
-    .then(data => {
-      const item = data.find(i => i.id === id);
-      if (!item) return;
+  /* ========================= */
+  /* SOLD状態チェック関数 */
+  /* ========================= */
 
-      // 番号 + 商品名
-      document.getElementById("detail-title").textContent = `# ${item.number} ${item.name}`;
+  function checkSoldState(sectionId) {
+    const isSold = localStorage.getItem("sold_" + sectionId);
 
-      // 価格
-      document.getElementById("detail-price").textContent = `$ ${item.price}`;
+    if (isSold === "true") {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
 
-      // 説明
-      document.getElementById("detail-desc").textContent = item.desc;
+      const product = section.closest(".vip-product");
+      if (product) {
+        product.style.display = "none";
+      }
 
-      // メイン画像
-      document.getElementById("detail-hero-img").src = item.hero_img;
+      const soldMessage = document.createElement("div");
+      soldMessage.textContent = "SOLD OUT";
+      soldMessage.style.textAlign = "center";
+      soldMessage.style.fontSize = "40px";
+      soldMessage.style.fontWeight = "900";
+      soldMessage.style.color = "#dc1c13";
+      soldMessage.style.margin = "60px 0";
 
-      // サブ画像
-      item.imgs.forEach((src, index) => {
-        const imgEl = document.getElementById(`detail-img-${index}`);
-        if (imgEl) imgEl.src = src;
-      });
+      section.parentNode.insertBefore(soldMessage, section);
+    }
+  }
 
-      // BUYボタンリンク
-      const buyBtns = document.querySelectorAll("#detail-buy-btn, #detail-buy-btn-bottom");
-      buyBtns.forEach(btn => btn.href = item.paypal_link);
-    })
-    .catch(err => console.error("VIP JSON load error:", err));
+  /* ========================= */
+  /* PayPal初期化 */
+  /* ========================= */
+
+  function initializePayPal(buttonContainerId, sectionId) {
+
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const priceElement = section.querySelector(".price");
+    if (!priceElement) return;
+
+    const priceValue = priceElement.textContent.trim().replace("$", "");
+
+    paypal.Buttons({
+
+      style: {
+        layout: "vertical",
+        color: "gold",
+        shape: "rect",
+        label: "paypal",
+        height: 45
+      },
+
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: priceValue }
+          }]
+        });
+      },
+
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+
+          alert("Sandbox Purchase Completed by " + details.payer.name.given_name);
+
+          /* ========================= */
+          /* SOLD状態保存 */
+          /* ========================= */
+
+          localStorage.setItem("sold_" + sectionId, "true");
+
+          const product = section.closest(".vip-product");
+          if (product) {
+            product.style.display = "none";
+          }
+
+          const soldMessage = document.createElement("div");
+          soldMessage.textContent = "SOLD OUT";
+          soldMessage.style.textAlign = "center";
+          soldMessage.style.fontSize = "40px";
+          soldMessage.style.fontWeight = "900";
+          soldMessage.style.color = "#dc1c13";
+          soldMessage.style.margin = "60px 0";
+
+          section.parentNode.insertBefore(soldMessage, section);
+
+        });
+      },
+
+      onError: function (err) {
+        console.error("PayPal Error:", err);
+        alert("Payment Error Occurred");
+      }
+
+    }).render("#" + buttonContainerId);
+  }
+
+  /* ========================= */
+  /* 初期チェック */
+  /* ========================= */
+
+  checkSoldState("vip-section-1");
+  checkSoldState("vip-section-2");
+
+  /* ========================= */
+  /* ボタン生成 */
+  /* ========================= */
+
+  initializePayPal("paypal-button-1", "vip-section-1");
+  initializePayPal("paypal-button-2", "vip-section-2");
+
 });
