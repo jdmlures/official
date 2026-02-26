@@ -11,7 +11,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -19,8 +18,11 @@
   gtag('js', new Date());
   gtag('config', 'G-X7TTG6B29W');
 </script>
-</head>
 
+<!-- ✅ PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&locale=en_US"></script>
+
+</head>
 <body>
 
 <!-- TOP BAR -->
@@ -39,49 +41,41 @@
 <!-- HERO -->
 <section class="hero">
   <div class="dots"></div>
+  <!-- HEROスライド例 -->
+  <div id="hero-slide-1" class="hero-item">
+    <img src="img/img1.jpg" alt="Product 1">
+    <div id="paypal-button-1"></div>
+  </div>
+  <div id="hero-slide-2" class="hero-item">
+    <img src="img/img2.jpg" alt="Product 2">
+    <div id="paypal-button-2"></div>
+  </div>
 </section>
 
 <h3 class="free">✈️ FREE SHIPPING ✈️</h3>
 
 <div class="payment-icons">
-
-    <!-- PayPal -->
+  <!-- 既存支払いアイコン -->
   <svg viewBox="0 0 120 40" aria-label="PayPal">
     <g transform="translate(0,4)">
-      <path fill="#003087"
-        d="M18 4c6 0 10 4 9 9s-5 9-11 9h-4l-2 12H4l5-30h9z"/>
-      <path fill="#009CDE"
-        d="M22 4c5 0 8 3 7 7s-4 7-9 7h-5l-2 12H6l4-26h12z"/>
+      <path fill="#003087" d="M18 4c6 0 10 4 9 9s-5 9-11 9h-4l-2 12H4l5-30h9z"/>
+      <path fill="#009CDE" d="M22 4c5 0 8 3 7 7s-4 7-9 7h-5l-2 12H6l4-26h12z"/>
     </g>
-    <text x="50" y="26"
-          font-family="Helvetica, Arial, sans-serif"
-          font-size="22"
-          font-weight="700">
+    <text x="50" y="26" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700">
       <tspan fill="#003087">Pay</tspan><tspan fill="#009CDE">Pal</tspan>
     </text>
   </svg>
-
-  <!-- VISA -->
   <img src="custom/c_img/visa.png" alt="Visa">
-
-  <!-- Mastercard -->
   <svg viewBox="0 0 48 32" aria-label="Mastercard">
     <circle cx="18" cy="16" r="10" fill="#EB001B"/>
     <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
     <path fill="#FF5F00" d="M24 6a10 10 0 000 20 10 10 0 000-20z"/>
   </svg>
-
-  <!-- American Express -->
   <svg viewBox="0 0 60 38" aria-label="American Express">
     <rect width="60" height="38" fill="#2E77BB"/>
-    <text x="30" y="16" font-size="9" fill="#ffffff"
-          font-family="Arial" font-weight="bold"
-          text-anchor="middle">AMERICAN</text>
-    <text x="30" y="28" font-size="9" fill="#ffffff"
-          font-family="Arial" font-weight="bold"
-          text-anchor="middle">EXPRESS</text>
+    <text x="30" y="16" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">AMERICAN</text>
+    <text x="30" y="28" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">EXPRESS</text>
   </svg>
-
 </div>
 
 <!-- VIP -->
@@ -92,7 +86,6 @@
     </a>
   </div>
 </section>
-
 
 <!-- NEWS -->
 <section class="section">
@@ -148,5 +141,32 @@
 </section>
 
 <script src="script.js"></script>
+<script src="purchase.js"></script>
+
+<script>
+// PayPalボタン描画（トップページ HERO用）
+const products = [
+  {id:1, price:45, title:"Product 1"},
+  {id:2, price:60, title:"Product 2"}
+];
+
+products.forEach(item => {
+  paypal.Buttons({
+    style: { layout:'vertical', color:'gold', height:48 },
+    createOrder: function(data, actions){
+      return actions.order.create({
+        purchase_units:[{ amount:{value:item.price.toString()}, description:item.title }]
+      });
+    },
+    onApprove:function(data, actions){
+      return actions.order.capture().then(function(details){
+        markAsPurchased(item.id);
+        alert("Payment completed by " + details.payer.name.given_name);
+      });
+    }
+  }).render(`#paypal-button-${item.id}`);
+});
+</script>
+
 </body>
 </html>
