@@ -7,7 +7,7 @@ fetch("../package.json")
   .then(data => {
     const item = data.packages.find(p => p.id === id);
     if(item){
-      const basePath = "../"; // detail.html から index.html 基準の image を表示するための補正
+      const basePath = "../"; 
 
       // 画像差し替え
       document.getElementById("detail-hero-img").src = basePath + item.image;
@@ -22,14 +22,54 @@ fetch("../package.json")
       document.getElementById("detail-price").textContent = `$ ${item.price}`;
       document.getElementById("detail-desc").textContent = item.description || "No description available";
 
-      // BUYリンク更新
-      const buyBtns = [
-        document.getElementById("detail-buy-btn"),
-        document.getElementById("detail-buy-btn-bottom")
-      ];
-      buyBtns.forEach(btn => {
-        btn.href = `https://www.paypal.com/uk/digital-wallet/ways-to-pay/credit-services?amount=${item.price}`;
-      });
+      // 上部PayPalボタン描画（黄色）
+      paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'gold',
+          shape: 'rect',
+          label: 'paypal',
+          height: 48
+        },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: item.price.toString() },
+              description: item.title
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert("Payment completed by " + details.payer.name.given_name);
+          });
+        }
+      }).render('#paypal-button-container');
+
+      // 下部PayPalボタン描画（黄色）
+      paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'gold',
+          shape: 'rect',
+          label: 'paypal',
+          height: 48
+        },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: item.price.toString() },
+              description: item.title
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert("Payment completed by " + details.payer.name.given_name);
+          });
+        }
+      }).render('#paypal-button-container-bottom');
+
     } else {
       console.warn("Item not found in JSON");
     }

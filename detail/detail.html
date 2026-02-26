@@ -20,6 +20,9 @@
   gtag('config', 'G-X7TTG6B29W');
 </script>
 
+<!-- ✅ PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&locale=en_US"></script>
+
 </head>
 <body>
 
@@ -30,7 +33,7 @@
 
     <div class="price-buy-wrapper">
       <p id="detail-price">$ 0</p>
-      <a href="#" class="paypal-btn" id="detail-buy-btn" target="_blank">BUY</a>
+      <div class="paypal-wrapper" id="paypal-button-container"></div>
     </div>
 
     <p id="detail-desc">Loading description...</p>
@@ -63,7 +66,7 @@
   </div>
 </section>
 
-<!-- 支払いロゴ -->
+<!-- 支払いロゴ & BACKボタン -->
 <section class="section back-section">
   <div class="payment-icons">
     <!-- PayPal -->
@@ -103,7 +106,7 @@
   <div class="container">
     <div class="price-buy-wrapper">
       <a href="../index.html" class="back-button">BACK</a>
-      <a href="#" class="paypal-btn" id="detail-buy-btn-bottom" target="_blank">BUY</a>
+      <div class="paypal-wrapper" id="paypal-button-container-bottom"></div>
     </div>
   </div>
 
