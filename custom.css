@@ -12,14 +12,13 @@ section img{
   height:auto;
   border-radius:6px; /* 既存の角丸を統一 */
   display:block;
-  margin-bottom:60px; /* 下マージン大きく */
 }
 
 /* section内のコンテナ余白は既存と統一 */
 .container{
   max-width:900px;
   margin:0 auto;
-  padding:0 20px;
+  /* padding:0 20px; */
 }
 
 /* 見出しと文章のスタイルを既存と統一 */
@@ -51,6 +50,12 @@ p{
 
 .top-button:hover{
   opacity:0.85;
+}
+
+.footer{ margin-top:60px; font-size:14px; opacity:0.7; border-top:1px solid #ddd; padding-top:20px; text-align: center; }
+
+section.section{
+  padding: 0 20px 60px 20px;
 }
 
 /* レスポンシブ */
