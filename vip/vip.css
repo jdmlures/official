@@ -15,6 +15,12 @@ body{
   line-height:1.6;
 }
 
+body a:active,
+body a:focus {
+  outline: none;         /* フォーカス枠を消す（必要なら） */
+}
+
+
 /* ========================= */
 /* セクション共通 */
 /* ========================= */
@@ -168,6 +174,13 @@ h1{
   padding-top:20px;
   text-align:center;        /* ← 中央揃え */
 }
+
+.section a{
+  font-size:13px;
+}
+
+
+
 
 /* ========================= */
 /* スマホ */
