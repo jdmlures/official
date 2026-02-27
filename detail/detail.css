@@ -13,6 +13,17 @@ body{
   line-height:1.6;
 }
 
+a,
+a:visited,
+a:hover,
+a:active{
+  color: inherit;
+  text-decoration: none;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 
 
 .container{
@@ -98,7 +109,7 @@ body{
 .nav a:active,
 .nav a:hover{
    color: #333;
-   opacity: 0;
+   /* opacity: 0; */
    outline: none;
 }
 
@@ -110,7 +121,15 @@ body{
   padding:  0 20px 60px 20px;
 }
 
-
+.back-button,
+.back-button:visited,
+.back-button:hover,
+.back-button:active{
+  color: #fff !important;
+  background: var(--green) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 
 
 /* スマホ */

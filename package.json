@@ -10,7 +10,7 @@
       "listed": "2026-02-15",
       "shipped": "GB",
       "description": "Package 1 description with more details and information about the product.",
-      "salesImages": ["img/logo.png"]
+      "salesImages": ["img/img2.jpg", "img/img3.jpg"]
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "listed": "2026-02-16",
       "shipped": "JP",
       "description": "Package 2 description",
-      "salesImages": ["img/0menu.png"]
+      "salesImages": ["img/img1.jpg"]
     },
         {
       "id": 3,
@@ -34,7 +34,7 @@
       "listed": "2026-02-16",
       "shipped": "JP",
       "description": "Package 3 description",
-      "salesImages": [""]
+      "salesImages": ["img/img5.jpg"]
     },
     {
       "id": 4,
