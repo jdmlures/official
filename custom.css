@@ -21,6 +21,10 @@ section img{
   /* padding:0 20px; */
 }
 
+section .dif{
+  padding: 0;
+}
+
 /* 見出しと文章のスタイルを既存と統一 */
 h2{
   font-size:28px;
