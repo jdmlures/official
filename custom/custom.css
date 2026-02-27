@@ -12,14 +12,17 @@ section img{
   height:auto;
   border-radius:6px; /* 既存の角丸を統一 */
   display:block;
-  margin-bottom:60px; /* 下マージン大きく */
 }
 
 /* section内のコンテナ余白は既存と統一 */
 .container{
   max-width:900px;
   margin:0 auto;
-  padding:0 20px;
+  /* padding:0 20px; */
+}
+
+section .dif{
+  padding: 0;
 }
 
 /* 見出しと文章のスタイルを既存と統一 */
