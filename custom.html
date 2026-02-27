@@ -5,28 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JDMLures Menu</title>
 
-<!-- favicon -->
+<link rel="stylesheet" href="custom.css">
+
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- 共通CSS -->
-<link rel="stylesheet" href="custom.css">
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-X7TTG6B29W');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X7TTG6B29W');
 </script>
+
 </head>
-<body style="margin: 0;">
+<body>
 
 <!-- ページヘッダー -->
-<section class="section dif">
+<section class="section menu-header">
   <div class="container">
     <h2>MENU</h2>
     <p>DM me for more details.</p>
@@ -36,31 +33,27 @@ gtag('config', 'G-X7TTG6B29W');
 <!-- メニュー画像 -->
 <section class="section">
   <div class="container">
-    <img src="../img/0menu.png" alt="Menu 1">
+    <img src="../img/0menu.png" alt="Menu">
   </div>
 </section>
 
-<!-- TOP画面に戻るボタン -->
-<section class="section">
-  <div class="container" style="text-align:center; margin-top:40px;">
+<!-- BACKボタン -->
+<section class="section back-area">
+  <div class="container center">
     <a href="../index.html" class="top-button">BACK</a>
   </div>
-
-    <div class="footer">
-      <p>© 2026 JDM Lures  All Rights Reserved.</p>
-    </div>
-
-      <nav style="margin-top:10px;">
-
-    <a href="../policy/policy.html" style="margin:0 10px; opacity: 0.7; font-size: 13px; text-decoration:none;">Refund Policy</a> |
-
-      <a href="../policy/policy.html" style="margin:0 10px; opacity: 0.7; font-size: 13px; text-decoration:none;">Refund Policy</a> |
-
-  <a href="../policy/policy.html" style="margin:0 10px;font-size: 13px;opacity: 0.7; text-decoration:none;">Privacy Policy</a> |
- 
-  </nav>
-
 </section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 JDM Lures All Rights Reserved.</p>
+
+  <nav class="footer-nav">
+    <a href="../policy/policy.html">Refund Policy</a>|
+    <a href="../policy/policy.html">Terms of Service</a>|
+    <a href="../policy/policy.html">Privacy Policy</a>
+  </nav>
+</footer>
 
 </body>
 </html>
