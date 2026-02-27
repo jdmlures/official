@@ -98,6 +98,16 @@ body{
   text-align: center;
 }
 
+.nav{
+   color: #333;
+}
+
+.nav a{
+  font-size: 13px;
+}
+
+
+
 /* スマホ */
 @media(max-width:768px){
   #detail-title{
