@@ -2,17 +2,35 @@
   "packages": [
     {
       "id": 1,
-      "package": 1,
+      "title": "# V-1 Custom Lure Red/Blue",
       "price": 35,
-      "description": "Custom Lure Red/Blue",
-      "images": ["../img/img1.jpg","../img/img2.jpg"]
+      "description": "Limited edition red/blue pattern lure.",
+      "images": ["../img/img1.jpg","../img/img2.jpg"],
+      "sold": true
     },
     {
-      "id": 2,
-      "package": 2,
-      "price": 40,
-      "description": "Custom Lure Green/Yellow",
-      "images": ["../img/img3.jpg","../img/img4.jpg"]
+      "id": 3,
+      "title": "# V-2 Custom Lure Green/Yellow",
+      "price": 32,
+      "description": "Limited edition green/yellow pattern lure.",
+      "images": ["../img/img3.jpg","../img/img4.jpg"],
+      "sold": false
+    },
+    {
+      "id": 4,
+      "title": "# V-5 Custom Lure Green/Yellow",
+      "price": 3,
+      "description": "Limited edition green/yellow pattern lure.",
+      "images": ["../img/img3.jpg","../img/img4.jpg"],
+      "sold": false
+    },
+    {
+      "id": 5,
+      "title": "# V-5 Custom Lure Green/Yellow",
+      "price": 39,
+      "description": "Limited edition green/yellow pattern lure.",
+      "images": ["../img/img3.jpg","../img/img4.jpg"],
+      "sold": false
     }
   ]
 }

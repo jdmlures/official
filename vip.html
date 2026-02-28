@@ -8,86 +8,50 @@
 
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7TTG6B29W"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-X7TTG6B29W');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-X7TTG6B29W');
 </script>
-
 </head>
+
 <body>
-<header> 
-  <h1 style="text-align: center;">VIP Exclusive Lures</h1>
+
+<header>
+  <h1 style="text-align:center;">VIP Exclusive Lures</h1>
 </header>
 
-<section class="section vip-product" id="vip-section-1">
-  <div class="container">
-    <h2># V-1 Custom Lure Red/Blue</h2>
-    <div class="price-buy-wrapper">
-      <p class="price">$35</p>
-      <div class="paypal-wrapper">
-        <div id="paypal-button-1"></div>
-      </div>
-    </div>
-    <p class="description">Limited edition red/blue pattern lure.</p>
-    <div class="card-slider">
-      <div class="card"><img src="../img/img1.jpg" alt=""></div>
-      <div class="card"><img src="../img/img2.jpg" alt=""></div>
-    </div>
-  </div>
-</section>
-
-<section class="section vip-product" id="vip-section-2">
-  <div class="container">
-    <h2># V-2 Custom Lure Green/Yellow</h2>
-    <div class="price-buy-wrapper">
-      <p class="price">$40</p>
-      <div class="paypal-wrapper">
-        <div id="paypal-button-2"></div>
-      </div>
-    </div>
-    <p class="description">Limited edition green/yellow pattern lure.</p>
-    <div class="card-slider">
-      <div class="card"><img src="../img/img3.jpg" alt=""></div>
-      <div class="card"><img src="../img/img4.jpg" alt=""></div>
-    </div>
-  </div>
-</section>
+<!-- 商品自動生成エリア -->
+<div id="vip-container"></div>
 
 <section class="section back-section">
-
   <div class="container">
-    <div style="display: block;" class="price-buy-wrapper">
+    <div class="price-buy-wrapper" style="display:block;">
       <a href="../index-vip.html" class="back-button">BACK</a>
     </div>
   </div>
 
   <div class="footer">
-    <p>© 2026 JDM Lures  All Rights Reserved.</p>
+    <p>© 2026 JDM Lures All Rights Reserved.</p>
   </div>
 
-    <nav style="margin-top:10px;">
-
-    <a href="../policy/policy.html" style="margin:0 10px; opacity: 0.7; font-size: 13px; text-decoration:none;">Refund Policy</a> |
-
-      <a href="../policy/policy.html" style="margin:0 10px; opacity: 0.7; font-size: 13px; text-decoration:none;">Terms of Service</a> |
-
-  <a href="../policy/policy.html" style="margin:0 10px;font-size: 13px;opacity: 0.7; text-decoration:none;">Privacy Policy</a> |
- 
+  <nav style="margin-top:10px;">
+    <a href="../policy/policy.html" style="margin:0 10px;opacity:0.7;font-size:13px;text-decoration:none;">Refund Policy</a> |
+    <a href="../policy/policy.html" style="margin:0 10px;opacity:0.7;font-size:13px;text-decoration:none;">Terms of Service</a> |
+    <a href="../policy/policy.html" style="margin:0 10px;opacity:0.7;font-size:13px;text-decoration:none;">Privacy Policy</a> |
   </nav>
-
 </section>
 
-
-
-
-<!-- ✅ locale=en_US 追加 -->
+<!-- ✅ PayPal SDK（必須） -->
 <script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&intent=capture&locale=en_US"></script>
+
+<!-- ✅ 商品生成JS -->
 <script src="vip.js"></script>
+
 </body>
 </html>

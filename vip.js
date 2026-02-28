@@ -1,94 +1,64 @@
-document.addEventListener("DOMContentLoaded", function () {
+if (!window.vipInitialized) {
 
-  /* ========================= */
-  /* セクション完全削除 */
-  /* ========================= */
+  window.vipInitialized = true;
 
-  function removeProduct(sectionId) {
+  fetch("vip.json")
+    .then(res => res.json())
+    .then(data => {
 
-    const section = document.getElementById(sectionId);
-    if (!section) return;
+      const container = document.getElementById("vip-container");
+      container.innerHTML = "";
 
-    const product = section.closest(".vip-product");
-    if (!product) return;
+      data.packages.forEach(pkg => {
 
-    product.remove(); // DOMから完全削除
-  }
+        if (pkg.sold) return;
 
-  /* ========================= */
-  /* SOLD状態チェック */
-  /* ========================= */
+        const section = document.createElement("section");
+        section.className = "section vip-product";
 
-  function checkSoldState(sectionId) {
+        section.innerHTML = `
+          <div class="container">
+            <h2>${pkg.title}</h2>
 
-    if (localStorage.getItem("sold_" + sectionId) === "true") {
-      removeProduct(sectionId);
-    }
-  }
+            <div class="price-buy-wrapper">
+              <p class="price">$${pkg.price}</p>
+              <div class="paypal-wrapper">
+                <div id="paypal-button-${pkg.id}"></div>
+              </div>
+            </div>
 
-  /* ========================= */
-  /* PayPal初期化 */
-  /* ========================= */
+            <p class="description">${pkg.description}</p>
 
-  function initializePayPal(buttonContainerId, sectionId) {
+            <div class="card-slider">
+              ${pkg.images.map(img => `
+                <div class="card">
+                  <img src="${img}" alt="">
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
 
-    // 既にSOLDならボタン生成しない
-    if (localStorage.getItem("sold_" + sectionId) === "true") return;
+        container.appendChild(section);
 
-    const section = document.getElementById(sectionId);
-    if (!section) return;
+        if (!document.querySelector(`#paypal-button-${pkg.id} iframe`)) {
 
-    const priceElement = section.querySelector(".price");
-    if (!priceElement) return;
+          paypal.Buttons({
+            createOrder: function(data, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: pkg.price.toString()
+                  }
+                }]
+              });
+            }
+          }).render(`#paypal-button-${pkg.id}`);
 
-    const priceValue = priceElement.textContent.trim().replace("$", "");
+        }
 
-    paypal.Buttons({
+      });
 
-      style: {
-        layout: "vertical",
-        color: "gold",
-        shape: "rect",
-        label: "paypal",
-        height: 45
-      },
+    });
 
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: priceValue }
-          }]
-        });
-      },
-
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function () {
-
-          // SOLD保存
-          localStorage.setItem("sold_" + sectionId, "true");
-
-          // 即削除
-          removeProduct(sectionId);
-
-        });
-      },
-
-      onError: function (err) {
-        console.error("PayPal Error:", err);
-        alert("Payment Error Occurred");
-      }
-
-    }).render("#" + buttonContainerId);
-  }
-
-  /* ========================= */
-  /* 初期処理 */
-  /* ========================= */
-
-  checkSoldState("vip-section-1");
-  checkSoldState("vip-section-2");
-
-  initializePayPal("paypal-button-1", "vip-section-1");
-  initializePayPal("paypal-button-2", "vip-section-2");
-
-});
+}
