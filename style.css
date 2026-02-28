@@ -256,6 +256,10 @@ section.logo-section{
   z-index:2;
 }
 
+.show{
+  display: none;
+}
+
 /* ================= CARD ================= */
 .card{
   flex-shrink:0;
