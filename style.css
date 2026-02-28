@@ -431,8 +431,6 @@ text-align: left;
   }
 }
 
-
-
 /* ================= MEDIA QUERY ================= */
 @media(max-width:768px){
   .hero{ height:420px; }
