@@ -451,3 +451,13 @@ text-align: left;
     font-size:22px;
   }
 }
+
+@media(min-width:566px){
+  .logo-section img{
+    display: block;   /* ← 必須 */
+    margin: 0 auto;   /* 中央揃え */
+    max-width:650px;  /* 任意：横幅上限 */
+    width: 100%;
+    height: auto;
+  }
+}
