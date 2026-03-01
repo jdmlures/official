@@ -1,64 +1,59 @@
-if (!window.vipInitialized) {
+fetch("vip.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("vip-container");
+    container.innerHTML = "";
 
-  window.vipInitialized = true;
+    data.packages.forEach(pkg => {
+      if (pkg.sold) return; // 売り切れは非表示
 
-  fetch("vip.json")
-    .then(res => res.json())
-    .then(data => {
+      // ブランドリスト作成（要素があれば）
+      let brandList = "";
+      if (pkg.brands && pkg.brands.length > 0) {
+        brandList = `<ul class="brand-list">
+          ${pkg.brands.map(b => `<li>${b}</li>`).join("")}
+        </ul>`;
+      }
 
-      const container = document.getElementById("vip-container");
-      container.innerHTML = "";
+      // 商品セクション生成
+      const section = document.createElement("section");
+      section.className = "section vip-product";
+      section.innerHTML = `
+        <div class="container">
+          <h2>${pkg.title}</h2>
 
-      data.packages.forEach(pkg => {
-
-        if (pkg.sold) return;
-
-        const section = document.createElement("section");
-        section.className = "section vip-product";
-
-        section.innerHTML = `
-          <div class="container">
-            <h2>${pkg.title}</h2>
-
-            <div class="price-buy-wrapper">
-              <p class="price">$${pkg.price}</p>
-              <div class="paypal-wrapper">
-                <div id="paypal-button-${pkg.id}"></div>
-              </div>
-            </div>
-
-            <p class="description">${pkg.description}</p>
-
-            <div class="card-slider">
-              ${pkg.images.map(img => `
-                <div class="card">
-                  <img src="${img}" alt="">
-                </div>
-              `).join("")}
+          <div class="price-buy-wrapper">
+            <p class="price">$${pkg.price}</p>
+            <div class="paypal-wrapper">
+              <div id="paypal-button-${pkg.id}"></div>
             </div>
           </div>
-        `;
 
-        container.appendChild(section);
+          <p class="description">${pkg.description}</p>
+          ${brandList}
 
-        if (!document.querySelector(`#paypal-button-${pkg.id} iframe`)) {
+          <div class="card-slider">
+            ${pkg.images.map(img => `
+              <div class="card">
+                <img src="${img}" alt="">
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+      container.appendChild(section);
 
-          paypal.Buttons({
-            createOrder: function(data, actions) {
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: pkg.price.toString()
-                  }
-                }]
-              });
-            }
-          }).render(`#paypal-button-${pkg.id}`);
-
-        }
-
-      });
-
+      // PayPalボタン生成
+      if (!document.querySelector(`#paypal-button-${pkg.id} iframe`)) {
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: { value: pkg.price.toString() }
+              }]
+            });
+          }
+        }).render(`#paypal-button-${pkg.id}`);
+      }
     });
-
-}
+  });
