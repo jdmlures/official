@@ -1,94 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
+fetch("vip.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("vip-container");
+    container.innerHTML = "";
 
-  /* ========================= */
-  /* セクション完全削除 */
-  /* ========================= */
+    data.packages.forEach(pkg => {
+      if (pkg.sold) return; // 売り切れは非表示
 
-  function removeProduct(sectionId) {
-
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    const product = section.closest(".vip-product");
-    if (!product) return;
-
-    product.remove(); // DOMから完全削除
-  }
-
-  /* ========================= */
-  /* SOLD状態チェック */
-  /* ========================= */
-
-  function checkSoldState(sectionId) {
-
-    if (localStorage.getItem("sold_" + sectionId) === "true") {
-      removeProduct(sectionId);
-    }
-  }
-
-  /* ========================= */
-  /* PayPal初期化 */
-  /* ========================= */
-
-  function initializePayPal(buttonContainerId, sectionId) {
-
-    // 既にSOLDならボタン生成しない
-    if (localStorage.getItem("sold_" + sectionId) === "true") return;
-
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    const priceElement = section.querySelector(".price");
-    if (!priceElement) return;
-
-    const priceValue = priceElement.textContent.trim().replace("$", "");
-
-    paypal.Buttons({
-
-      style: {
-        layout: "vertical",
-        color: "gold",
-        shape: "rect",
-        label: "paypal",
-        height: 45
-      },
-
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: priceValue }
-          }]
-        });
-      },
-
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function () {
-
-          // SOLD保存
-          localStorage.setItem("sold_" + sectionId, "true");
-
-          // 即削除
-          removeProduct(sectionId);
-
-        });
-      },
-
-      onError: function (err) {
-        console.error("PayPal Error:", err);
-        alert("Payment Error Occurred");
+      // ブランドリスト作成（要素があれば）
+      let brandList = "";
+      if (pkg.brands && pkg.brands.length > 0) {
+        brandList = `<ul class="brand-list">
+          ${pkg.brands.map(b => `<li>${b}</li>`).join("")}
+        </ul>`;
       }
 
-    }).render("#" + buttonContainerId);
-  }
+      // 商品セクション生成
+      const section = document.createElement("section");
+      section.className = "section vip-product";
+      section.innerHTML = `
+        <div class="container">
+          <h2>${pkg.title}</h2>
 
-  /* ========================= */
-  /* 初期処理 */
-  /* ========================= */
+          <div class="price-buy-wrapper">
+            <p class="price">$${pkg.price}</p>
+            <div class="paypal-wrapper">
+              <div id="paypal-button-${pkg.id}"></div>
+            </div>
+          </div>
 
-  checkSoldState("vip-section-1");
-  checkSoldState("vip-section-2");
+          <p class="description">${pkg.description}</p>
+          ${brandList}
 
-  initializePayPal("paypal-button-1", "vip-section-1");
-  initializePayPal("paypal-button-2", "vip-section-2");
+          <div class="card-slider">
+            ${pkg.images.map(img => `
+              <div class="card">
+                <img src="${img}" alt="">
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+      container.appendChild(section);
 
-});
+      // PayPalボタン生成
+      if (!document.querySelector(`#paypal-button-${pkg.id} iframe`)) {
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: { value: pkg.price.toString() }
+              }]
+            });
+          }
+        }).render(`#paypal-button-${pkg.id}`);
+      }
+    });
+  });
