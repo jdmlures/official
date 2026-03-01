@@ -131,6 +131,9 @@ a {
   visibility: visible !important;
 }
 
+/* .caution{
+  padding: 10px 0;
+} */
 
 /* スマホ */
 @media(max-width:768px){
