@@ -20,6 +20,10 @@ body a:focus {
   outline: none;         /* フォーカス枠を消す（必要なら） */
 }
 
+a{
+  touch-action: manipulation;
+}
+
 
 /* ========================= */
 /* セクション共通 */
@@ -98,11 +102,12 @@ h1{
   gap:12px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
+  padding-bottom: 10px; /* 下スクロール余白 */
 }
 
 .card{
-  flex:0 0 90%;
-  scroll-snap-align:center;
+  flex:0 0 80%;
+ scroll-snap-align: start;  /* center→startにして自然に見える */
   border-radius:4px;            /* ← 角丸追加 */
   overflow:hidden;               /* ← 角丸適用 */
 }
