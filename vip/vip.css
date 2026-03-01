@@ -20,6 +20,10 @@ body a:focus {
   outline: none;         /* フォーカス枠を消す（必要なら） */
 }
 
+a{
+  touch-action: manipulation;
+}
+
 
 /* ========================= */
 /* セクション共通 */

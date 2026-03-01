@@ -23,8 +23,8 @@ a:active{
 
 a {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-
 
 .container{
   max-width:900px;

@@ -10,6 +10,10 @@ body{
   color:var(--green);
 }
 
+a{
+  touch-action: manipulation;
+}
+
 /* ===== 共通 ===== */
 
 .section{

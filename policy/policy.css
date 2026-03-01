@@ -19,6 +19,10 @@ body {
   line-height:1.6;
 }
 
+a{
+    touch-action: manipulation;
+}
+
 section.logo-section {
   text-align:center;
   padding:40px 0;

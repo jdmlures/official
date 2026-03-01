@@ -14,6 +14,10 @@ body{
   line-height:1.6;
 }
 
+a {
+  touch-action: manipulation;
+}
+
 ul{ list-style:none; padding:0; margin:0; }
 
 /* ================= TOP BAR ================= */
