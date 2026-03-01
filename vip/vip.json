@@ -14,7 +14,7 @@
       "title": "# V-5 Custom Lure Green/Yellow",
       "price": 3,
       "description": "Limited edition green/yellow pattern lure.",
-      "brands": ["jackal"], 
+      "brands": [""], 
       "images": ["../img/img3.jpg","../img/img4.jpg"],
       "sold": false
     }
