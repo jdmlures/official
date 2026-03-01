@@ -9,7 +9,7 @@
       "sold": "2026-02-21",
       "listed": "2026-02-15",
       "shipped": "GB",
-      "description": "Package 1 description with more details and information about the product.",
+      "description": "✅ Please note that in some browsers or devices, PayPal login may not function properly. For a smooth checkout experience, we recommend using credit card payment.",
       "salesImages": ["img/img2.jpg", "img/img3.jpg"]
     },
     {
@@ -21,7 +21,7 @@
       "sold": "2026-02-22",
       "listed": "2026-02-16",
       "shipped": "JP",
-      "description": "Package 2 description",
+      "description": "✅ Please note that in some browsers or devices, PayPal login may not function properly. For a smooth checkout experience, we recommend using credit card payment.",
       "salesImages": ["img/img1.jpg"]
     },
         {
@@ -33,7 +33,7 @@
       "sold": "2026-02-22",
       "listed": "2026-02-16",
       "shipped": "JP",
-      "description": "Package 3 description",
+      "description": "✅ Please note that in some browsers or devices, PayPal login may not function properly. For a smooth checkout experience, we recommend using credit card payment.",
       "salesImages": ["img/img5.jpg"]
     },
     {
@@ -45,7 +45,7 @@
       "sold": "2026-02-20",
       "listed": "2026-02-14",
       "shipped": "US",
-      "description": "Package 4 description",
+      "description": "✅ Please note that in some browsers or devices, PayPal login may not function properly. For a smooth checkout experience, we recommend using credit card payment.",
       "salesImages": []
     },
     {
@@ -57,7 +57,7 @@
       "sold": "2026-02-18",
       "listed": "2026-02-13",
       "shipped": "JP",
-      "description": "Package 5 description",
+      "description": "✅ Please note that in some browsers or devices, PayPal login may not function properly. For a smooth checkout experience, we recommend using credit card payment.",
       "salesImages": []
     },
     {
@@ -69,8 +69,8 @@
       "sold": "",
       "listed": "",
       "shipped": "",
-      "description": "Package 3 dummy",
+      "description": "✅ Please note that in some browsers or devices, PayPal login may not function properly. For a smooth checkout experience, we recommend using credit card payment.",
       "salesImages": []
     }
   ]
-}
+} 

@@ -240,6 +240,11 @@ section.logo-section{
 
 /* ================= NEWS ================= */
 .news ul li{ padding: 10px 0;}
+
+.caution{ 
+  color: var(--red);
+  font-weight: bold;
+ }
 /* ================= SECTIONS ================= */
 /* .section{ padding:40px 0; ; } */
 .container{ max-width:900px; margin:0 auto; padding:0 20px; }
