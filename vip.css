@@ -106,7 +106,7 @@ h1{
 }
 
 .card{
-  flex:0 0 80%;
+  flex:0 0 90%;
  scroll-snap-align: start;  /* center→startにして自然に見える */
   border-radius:4px;            /* ← 角丸追加 */
   overflow:hidden;               /* ← 角丸適用 */
