@@ -23,8 +23,8 @@ a:active{
 
 a {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-
 
 .container{
   max-width:900px;
@@ -44,6 +44,10 @@ a {
   margin:0;
   width:120px;
   text-align:center;
+}
+
+#detail-desc{
+  color: #00457C
 }
 
 /* 価格＋BUY */

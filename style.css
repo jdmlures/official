@@ -246,7 +246,7 @@ section.logo-section{
 .news ul li{ padding: 10px 0;}
 
 .caution{ 
-  color: var(--red);
+  color:#00457C;
   font-weight: bold;
  }
 /* ================= SECTIONS ================= */
