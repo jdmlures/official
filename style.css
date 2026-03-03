@@ -219,8 +219,8 @@ section.logo-section{
   height: auto;
   display: block;
   border-radius: 12px; /* 他セクションと統一感 */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3); /* HEROやCUSTOM BUTTONに近い雰囲気 */
-  transition: transform 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.07); /* HEROやCUSTOM BUTTONに近い雰囲気 */
+  /* transition: transform 0.2s ease; */
 }
 
 .vip-banner:hover {
