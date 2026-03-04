@@ -46,6 +46,10 @@ a {
   text-align:center;
 }
 
+#detail-desc{
+  color: #00457C
+}
+
 /* 価格＋BUY */
 .price-buy-wrapper{
   display:flex;
