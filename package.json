@@ -2,75 +2,97 @@
   "packages": [
     {
       "id": 1,
-      "image": "img/img1.jpg",
       "package": 1,
       "price": 10,
       "status": "stock",
       "sold": "2026-02-21",
       "listed": "2026-02-15",
       "shipped": "GB",
+      "image": "img/img1.jpg",
       "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
-      "salesImages": ["img/img2.jpg", "img/img3.jpg"]
+      "salesImages": [
+        "img/img2.jpg",
+        "img/img3.jpg"
+      ]
     },
     {
       "id": 2,
-      "image": "img/img2.jpg",
       "package": 2,
       "price": 150,
       "status": "stock",
       "sold": "2026-02-22",
       "listed": "2026-02-16",
       "shipped": "JP",
+      "image": "img/img2.jpg",
       "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
-      "salesImages": ["img/img1.jpg"]
+      "salesImages": [
+        "img/img1.jpg"
+      ]
     },
-        {
+    {
       "id": 3,
-      "image": "img/img3.jpg",
       "package": 3,
       "price": 112,
       "status": "stock",
       "sold": "2026-02-22",
       "listed": "2026-02-16",
       "shipped": "JP",
+      "image": "../img/img3.jpg",
       "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
-      "salesImages": ["img/img5.jpg"]
+      "salesImages": [
+        "img/img5.jpg"
+      ]
     },
     {
       "id": 4,
-      "image": "img/img4.jpg",
       "package": 4,
       "price": 140,
       "status": "stock",
       "sold": "2026-02-20",
       "listed": "2026-02-14",
       "shipped": "US",
+      "image": "img/img4.jpg",
       "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
       "salesImages": []
     },
     {
       "id": 5,
-      "image": "img/img5.jpg",
       "package": 5,
       "price": 160,
       "status": "stock",
       "sold": "2026-02-18",
       "listed": "2026-02-13",
       "shipped": "JP",
+      "image": "img/img5.jpg",
       "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
       "salesImages": []
     },
     {
-      "id": 3,
-      "image": "",
+      "id": 99,
       "package": 6,
       "price": 0,
       "status": "dummy",
       "sold": "",
       "listed": "",
       "shipped": "",
+      "image": "",
       "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
       "salesImages": []
-    }
+    },
+{
+  "id": 6,
+  "package": 6,
+  "price": 180,
+  "status": "stock",
+  "sold": "",
+  "listed": "2026-03-05",
+  "shipped": "US",
+  "image": "detail/img/6-0.jpg",
+  "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
+  "salesImages": [
+    "detail/img/6-1.jpg",
+    "detail/img/6-2.jpg"
   ]
-} 
+}
+  ]
+}

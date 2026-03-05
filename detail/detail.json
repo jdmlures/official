@@ -1,24 +1,12 @@
 {
-  "blocks": [
-    {
-      "title": "Specification",
-      "image": "../img/spec1.jpg",
-      "text": "Length 120mm / Weight 25g / Floating"
-    },
-    {
-      "title": "Material",
-      "image": "../img/spec2.jpg",
-      "text": "High density resin body with reinforced hook hanger."
-    },
-    {
-      "title": "Action",
-      "image": "../img/spec3.jpg",
-      "text": "Wide wobbling action with natural rolling."
-    },
-    {
-      "title": "Country",
-      "image": "../img/spec4.jpg",
-      "text": "Made in Japan."
-    }
+  "id": 1,
+  "name": "JDM Custom Lure",
+  "price": 80,
+  "image": "img/img01/01.jpg",
+  "description": "✅ All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.",
+  "salesImages": [
+    "01.jpg",
+    "02.jpg",
+    "03.jpg"
   ]
 }
